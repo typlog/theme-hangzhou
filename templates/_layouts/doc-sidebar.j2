@@ -1,0 +1,51 @@
+{% from "macros/icons.j2" import render_icon %}
+
+{% macro render_sidebar_item(item) %}
+<div class="sidebar-item{% if item.link == note.url %} active{% endif %}">
+  <a href="{{ item.link }}">
+    {% if item.icon %}{{ render_icon(item.icon) }}{% endif %}
+    <span class="link-text">{{ item.title }}</span>
+    {% if item.badge %}
+    <span class="link-badge" data-badge="{{ item.badge }}">{{ item.badge }}</span>
+    {% endif %}
+  </a>
+</div>
+{% endmacro %}
+
+<div id="doc-sidebar" class="z-20 hidden shrink-0 lg:block w-[18rem]">
+  <div class="w-full lg:sticky lg:top-28">
+    <div class="lg:hidden flex flex-col gap-1">
+      {% for item in columns %}
+        <a class="flex items-center gap-2 px-4 py-2 text-sm"
+          href="{% if item.metadata.url %}{{ item.metadata.url }}{% else %}{{ item.url }}{% endif %}"
+        >
+          {% if item.metadata.icon %}
+            <iconify-icon icon="{{ item.metadata.icon }}"></iconify-icon>
+          {% endif %}
+          <span class="font-medium">{{ item.title }}</span>
+        </a>
+      {% endfor %}
+    </div>
+    <div class="pt-8 text-sm leading-6">
+      {% for item in column_config.sidebar %}
+        {% if item.children %}
+          <div class="sidebar-items">
+            <button class="sidebar-items-trigger" aria-controls="sidebar-items-{{ loop.index }}"
+              aria-expanded="{{ column_config.expanded|default('false') }}">
+              <span>{{ item.title }}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="m6 9l6 6l6-6"></path>
+              </svg>
+            </button>
+            <div id="sidebar-items-{{ loop.index }}" class="sidebar-items-content">
+              {% for child in item.children %}{{ render_sidebar_item(child) }}{% endfor%}
+            </div>
+          </div>
+        {% else %}
+          {{ render_sidebar_item(item) }}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="sidebar-backdrop"></div>

@@ -1,0 +1,20 @@
+.nav-tabs a.nav-tabs-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  height: 100%;
+  font-weight: 500;
+  color: var(--gray-11);
+  padding-top: 2px;
+  border-bottom: 2px solid transparent;
+}
+.nav-tabs a.nav-tabs-item:where(.active) {
+  font-weight: 600;
+  color: var(--gray-12);
+  border-color: var(--accent-10);
+}
+.nav-tabs a.nav-tabs-item:hover {
+  color: var(--gray-12);
+  border-color: var(--gray-10);
+}

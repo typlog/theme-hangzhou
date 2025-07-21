@@ -1,9 +1,0 @@
-{% if theme_nav_socials %}
-<nav class="nav-socials">
-  {% for item in theme_nav_socials %}
-    <a href="{{ item.url }}"{% if item.blank %} target="_blank"{% endif %} aria-label="{{ item.title }}">
-      <iconify-icon icon="{{ item.icon }}"></iconify-icon>
-    </a>
-  {% endfor %}
-</nav>
-{% endif %}

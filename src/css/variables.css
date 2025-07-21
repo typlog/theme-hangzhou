@@ -7,9 +7,9 @@
   --text-color: var(--gray-12);
   --heading-color: #000;
   --background-color: #fff;
-  --base-font: roboto, var(--system-sans), var(--system-cjk), sans-serif;
-  --heading-font: nunito-sans, var(--system-sans), var(--system-cjk), sans-serif;
-  --content-font: merriweather, var(--system-serif), var(--system-cjk), serif;
+  --base-font: Inter, var(--system-sans), var(--system-cjk), sans-serif;
+  --heading-font: Inter, var(--system-sans), var(--system-cjk), sans-serif;
+  --content-font: Inter, var(--system-serif), var(--system-cjk), serif;
 }
 
 .dark {

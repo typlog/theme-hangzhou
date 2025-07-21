@@ -1,0 +1,44 @@
+@media (width < 80rem) {
+  #doc-outline {
+    display: none;
+    position: fixed;
+    top: 105px;
+    right: 2rem;
+    padding: 1.5rem 0.5rem;
+    box-shadow: var(--shadow-lg);
+    background-color: var(--background-color);
+    border: 1px solid var(--gray-a4);
+    border-radius: 6px;
+    z-index: 30;
+  }
+  #doc-outline[aria-hidden="false"] {
+    display: block;
+  }
+}
+
+.outline-marker {
+  position: absolute;
+}
+
+.outline-content {
+  border-left: 1px solid var(--gray-a3);
+}
+
+.outline-content > ul {
+  padding: 0 1rem;
+}
+
+.outline-content a {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  font-size: .875rem;
+  line-height: 2rem;
+  color: var(--gray-11);
+}
+
+.outline-content a:hover {
+  color: var(--gray-12);
+}

@@ -21,12 +21,26 @@
       ]
     },
     {
+      "title": "Pricing",
+      "link": "/pricing"
+    },
+    {
       "title": "GitHub",
       "link": "https://github.com/typlog/theme-ueno",
       "new_tab": true
     }
   ],
-  "theme_social_links": [
+  "theme_nav_actions": [
+    {
+      "title": "Sign In",
+      "link": "#"
+    },
+    {
+      "title": "Sign Up",
+      "link": "#"
+    }
+  ],
+  "theme_foot_socials": [
     {
       "icon": "logos:github-icon",
       "title": "GitHub",

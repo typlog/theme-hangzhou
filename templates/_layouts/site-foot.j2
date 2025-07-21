@@ -1,40 +1,33 @@
 {% from "macros/links.j2" import render_section_links, render_icon_links %}
 
-{% if theme_foot_links %}
-<div class="site-foot has-foot-links">
-  <div class="site-foot_content">
-    <div class="site-foot_logo">
-      {% include "components/site-logo.j2" %}
+<div class="bg-gray-2 border-t py-6">
+  <div class="px-4 md:px-8 xl:px-16 relative">
+    <div class="flex">
+      <div class="flex flex-col gap-4">
+        <div class="site-foot_logo">
+          {% include "components/site-logo.j2" %}
+        </div>
+
+      </div>
     </div>
-    <div class="site-foot_links">
-      {{ render_section_links(theme_foot_links) }}
+    <div class="grow">
+      {% if theme_foot_links %}
+        {{ render_section_links(theme_foot_links) }}
+      {% endif %}
     </div>
-  </div>
-  <div class="site-foot_copyright">
-    {% if theme_copyright %}
-      <div>{{ theme_copyright|safe }}</div>
-    {% endif %}
-    {{ render_icon_links(theme_social_links) }}
-  </div>
-</div>
-{% else %}
-<div class="site-foot">
-  <div class="site-foot_content">
-    <div class="site-foot_logo">
-      {% include "components/site-logo.j2" %}
+    <div class="flex justify-between gap-8 pt-10">
+      <div class="text-sm text-gray-10 site-copyright">
+        {% if theme_copyright %}
+        {{ theme_copyright|safe }}
+        {% else %}
+        &copy; {{ site.name }}
+        {% endif %}
+      </div>
+      {% if theme_foot_socials %}
+        <div class="site-foot_socials">
+          {{ render_icon_links(theme_foot_socials) }}
+        </div>
+      {% endif %}
     </div>
-    <div class="site-foot_links">
-      <a href="/archive/">{{ translate('archive') }}</a>
-      {% for column in query.all_columns() %}
-        <a href="{{ column.url }}">{{ column.title }}</a>
-      {% endfor %}
-    </div>
-  </div>
-  <div class="site-foot_copyright">
-    {% if theme_copyright %}
-      <div>{{ theme_copyright|safe }}</div>
-    {% endif %}
-    {{ render_icon_links(theme_social_links) }}
   </div>
 </div>
-{% endif %}

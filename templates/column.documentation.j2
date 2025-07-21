@@ -2,7 +2,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ _static_url }}/base.css">
+<link rel="stylesheet" href="{{ _static_url }}/content.css">
 {% endblock %}
 
 {% block scripts %}
@@ -10,14 +10,10 @@
 {% include "components/iconify-icon.j2" %}
 {% endblock %}
 
+{% set columns = query.filter_columns(type=column.type, lang=column.lang) %}
+
 {% block body %}
-  <div id="navbar" class="z-30 fixed lg:sticky top-0 w-full">
-    <div id="navbar-backdrop" class="absolute w-full h-full backdrop-blur border-b"></div>
-    <div class="mx-auto max-w-content relative">
-      {% include "./_layouts/site-head.j2" %}
-    </div>
-  </div>
-  <main id="main" class="max-w-content mx-auto px-4 pt-28 lg:pt-0 lg:px-8">
-  </main>
+  {% include "./_layouts/doc-head.j2" %}
+  <div>hahah</div>
   {% include "./_layouts/site-foot.j2" %}
 {% endblock %}

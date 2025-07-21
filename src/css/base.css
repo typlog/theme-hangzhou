@@ -1,4 +1,9 @@
 @import "tailwindcss";
+@import "./tailwind.css";
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   text-rendering: optimizeLegibility;
@@ -15,9 +20,6 @@ video {
   vertical-align: middle;
 }
 
-.container {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  box-sizing: border-box;
+#main {
+  min-height: calc(100vh - 220px);
 }

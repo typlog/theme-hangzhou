@@ -1,0 +1,57 @@
+{% block styles %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ _static_url }}/docs.css">
+{% include "components/clipboard-copy.j2" %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ _static_url }}/app.js" type="module"></script>
+{% include "components/iconify-icon.j2" %}
+{% include "components/lightbox.j2" %}
+{% endblock %}
+
+{% set column = note.column %}
+{% set columns = query.filter_columns(type=column.type, lang=column.lang) %}
+
+{% if column.metadata.config %}
+{% set column_config = query.parse_json_asset(column.metadata.config) %}
+{% else %}
+{% set column_config = None %}
+{% endif %}
+
+{% block body %}
+  {% include "./_layouts/doc-head.j2" %}
+  <main id="main" class="max-w-content flex mx-auto px-4 pt-28 lg:pt-0 lg:px-8 lg:gap-8">
+    {% if column_config and column_config.sidebar %}
+      {% include "./_layouts/doc-sidebar.j2" %}
+    {% endif %}
+    <div id="content-container" class="grow overflow-x-hidden px-2 md:px-4 lg:px-10" style="--scroll-margin-top: 140px">
+      <article class="relative grow min-w-0 shrink pt-8">
+        <h1 class="p-name text-4xl font-semibold">{{ note.title }}</h1>
+        {% if note.subtitle %}
+          <h2 class="p-summary mt-2 text-lg text-gray-11">{{ note.subtitle }}</h2>
+        {% endif %}
+        <div class="e-content">
+          {{ note.content }}
+        </div>
+      </article>
+    </div>
+    <div class="hidden xl:flex flex-col gap-6 shrink-0 self-start sticky top-28 overflow-y-auto">
+      <div class="outline pt-8 w-64">
+        <div class="outline-marker"></div>
+        <div class="flex items-center gap-1 text-sm mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 6h10"/>
+            <path d="M6 12h9"/>
+            <path d="M11 18h7"/>
+          </svg>
+          <span class="font-medium">{{ translate('onthispage') }}</span>
+        </div>
+        <div class="js-outline outline-content"></div>
+      </div>
+    </div>
+  </main>
+  {% include "./_layouts/site-foot.j2" %}
+{% endblock %}

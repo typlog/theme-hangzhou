@@ -1,6 +1,4 @@
 .e-content {
-  font-family: merriweather, var(--system-serif), var(--system-cjk), serif;
-  font-size: 18px;
   line-height: 1.62;
   margin-top: 2rem;
   margin-bottom: 3rem;
@@ -17,6 +15,7 @@
 .e-content h5,
 .e-content h6 {
   color: var(--heading-color);
+  scroll-margin-top: var(--scroll-margin-top);
 }
 
 .e-content h1 {
