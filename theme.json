@@ -1,0 +1,66 @@
+{
+  "name": "nezu",
+  "name#ja": "根津",
+  "name#zh": "根津",
+  "version": "0.5.1",
+  "repo": "typlog/theme-nezu",
+  "image": "https://user-images.githubusercontent.com/290496/185733933-ed6ad0a0-0634-47bd-8a45-2e38e1d8b5ae.png",
+  "description": "A single column theme for blogs and podcasts.",
+  "config": [
+    {
+      "name": "color_mode",
+      "type": "enum",
+      "default": "auto",
+      "options": {
+        "choices": ["auto", "light", "dark"]
+      }
+    },
+    {
+      "name": "copyright",
+      "type": "string"
+    },
+    {
+      "name": "nav_links",
+      "type": "NavLink",
+      "multiple": true,
+      "options": {
+        "children": true
+      }
+    },
+    {
+      "name": "podcast_links",
+      "type": "IconLink",
+      "multiple": true
+    },
+    {
+      "name": "social_links",
+      "type": "IconLink",
+      "multiple": true
+    },
+    {
+      "name": "foot_links",
+      "type": "SectionLinks",
+      "multiple": true
+    }
+  ],
+  "messages": {
+    "none": "There is no items",
+    "none#zh": "没有内容",
+    "archive": "Archive",
+    "archive#zh": "归档",
+    "prev": "Previous",
+    "prev#zh": "上一页",
+    "next": "Next",
+    "next#zh": "下一页",
+    "readthis": "Read This",
+    "readthis#zh": "下一篇",
+    "switch_auto": "Switch to auto color mode",
+    "switch_auto#zh": "切换至系统默认模式",
+    "switch_light": "Switch to light color mode",
+    "switch_light#zh": "切换至明亮模式",
+    "switch_dark": "Switch to dark color mode",
+    "switch_dark#zh": "切换至黑暗模式",
+    "copy": "Copy",
+    "copy#zh": "复制"
+  }
+}

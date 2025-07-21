@@ -1,0 +1,54 @@
+{
+  "_static_url": "/src",
+  "theme_color_mode": "auto",
+  "theme_nav_links": [
+    {
+      "title": "Examples",
+      "link": "#",
+      "children": [
+        {
+          "icon": "logos:amp-icon",
+          "title": "Blog",
+          "subtitle": "A blog example",
+          "link": "/blog/"
+        },
+        {
+          "icon": "lucide:podcast",
+          "title": "Podcast",
+          "subtitle": "A podcast example",
+          "link": "/podcast/"
+        }
+      ]
+    },
+    {
+      "title": "GitHub",
+      "link": "https://github.com/typlog/theme-ueno",
+      "new_tab": true
+    }
+  ],
+  "theme_social_links": [
+    {
+      "icon": "logos:github-icon",
+      "title": "GitHub",
+      "link": "https://github.com/typlog/theme-nezu"
+    },
+    {
+      "icon": "logos:bluesky",
+      "title": "Bluesky",
+      "link": "https://bsky.app/profile/typlog.com"
+    }
+  ],
+  "theme_podcast_links": [
+    {
+      "icon": "simple-icons:applepodcasts",
+      "title": "Apple Podcasts",
+      "link": "https://podcasts.apple.com/us/podcast/typlog/id1564550000"
+    },
+    {
+      "icon": "simple-icons:spotify",
+      "title": "Spotify",
+      "link": "https://open.spotify.com/show/5Z6Z9Z6Z6Z6Z6Z6Z6Z6Z6Z"
+    }
+  ],
+  "theme_copyright": "Copy &copy; 2024, <a href='https://typlog.com/'>Typlog</a>"
+}

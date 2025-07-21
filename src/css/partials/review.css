@@ -1,0 +1,31 @@
+.review {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--gray-a2);
+  border-radius: 6px;
+  padding: 0.825rem;
+  box-sizing: border-box;
+}
+
+.review img {
+  object-fit: cover;
+  min-height: 100px;
+  min-width: 100px;
+  margin: 0;
+}
+
+.review h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.review-rating {
+  margin-bottom: 1rem;
+}
+
+.review-item-author {
+  font-size: 0.875rem;
+  color: var(--gray-a10, #0000007C);
+  margin-bottom: 0.625rem;
+}

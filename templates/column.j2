@@ -1,0 +1,27 @@
+{% block styles %}
+<link rel="preconnect" href="https://use.typkit.net">
+<link rel="stylesheet" href="https://use.typekit.net/zbe5yhf.css">
+<link rel="stylesheet" href="{{ _static_url }}/base.css">
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ _static_url }}/app.js" type="module"></script>
+{% include "components/iconify-icon.j2" %}
+{% include "components/lightbox.j2" %}
+{% endblock %}
+
+{% block body %}
+  {% include "./_layouts/site-head.j2" %}
+  <div class="container">
+    {% include "./_partials/column-info.j2" %}
+    <div class="entry-list js-lightbox">
+      {% if pagination.items %}
+        {% for note in pagination.items %}
+          {% include "./_partials/entry-item.j2" %}
+        {% endfor %}
+      {% endif %}
+      {% include "./_partials/navigation.j2" %}
+    </div>
+  </div>
+  {% include "./_layouts/site-foot.j2" %}
+{% endblock %}

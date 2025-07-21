@@ -1,0 +1,83 @@
+.share-buttons a {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  line-height: 36px;
+  color: var(--gray-11);
+  background: var(--gray-a3);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.share-buttons a:hover {
+  color: white;
+  background: var(--icon-color);
+}
+.share-buttons a[data-type="weibo"] {
+  --icon-color: #e24040;
+}
+.share-buttons a[data-type="bluesky"] {
+  --icon-color: #0085ff;
+}
+.share-buttons a[data-type="x"] {
+  --icon-color: #000;
+}
+.share-buttons a[data-type="telegram"] {
+  --icon-color: #179cde;
+}
+.share-buttons a[data-type="wechat"] {
+  --icon-color: #20b767;
+}
+.share-buttons a[data-type="facebook"] {
+  --icon-color: #1877F2;
+}
+
+#wechat-share {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: white;
+  box-sizing: border-box;
+  padding: 2rem;
+  z-index: 99;
+}
+
+#wechat-share.show {
+  display: block;
+}
+
+#wechat-share button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: #999;
+}
+
+#wechat-share button:hover {
+  color: #666;
+}
+
+#wechat-share button > svg {
+  width: 2.4rem;
+}
+
+#wechat-share > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3rem;
+}
+
+#wechat-share > div > svg {
+  width: 300px;
+  height: 300px;
+}

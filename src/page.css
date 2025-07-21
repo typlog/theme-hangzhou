@@ -1,0 +1,15 @@
+@import "./css/base.css";
+@import "./css/variables.css";
+@import "./css/layout.css";
+
+@import "./css/layout/entry-detail.css";
+
+@import "./css/content/e-content.css";
+@import "./css/content/block-code.css";
+
+.MarkdownArticle1 {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}

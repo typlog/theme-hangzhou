@@ -1,0 +1,12 @@
+{% set prev_note = query.previous_note(note.published_at) %}
+{% if prev_note %}
+  <section class="previous-entry">
+    <h2>{{ translate('readthis') }}</h2>
+    <a href="{{ prev_note.url }}">
+      <h3>{{ prev_note.title }}</h3>
+      {% if prev_note.subtitle %}
+      <div>{{ prev_note.subtitle }}</div>
+      {% endif %}
+    </a>
+  </section>
+{% endif %}

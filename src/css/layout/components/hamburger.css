@@ -1,0 +1,55 @@
+button.hamburger {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+.hamburger_box {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 14px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.hamburger span {
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  left: 0;
+  background-color: var(--text-color);
+  transition: top .25s, transform .25s;
+}
+
+.hamburger_1 {
+  top: 0;
+}
+
+.hamburger_2 {
+  top: 6px;
+  transform: matrix(1, 0, 0, 1, -8, 0);
+}
+
+.hamburger_3 {
+  top: 12px;
+  transform: matrix(1, 0, 0, 1, -4, 0);
+}
+
+button.hamburger[aria-expanded=true] .hamburger_1 {
+  top: 6px;
+  transform: translate(0) rotate(225deg);
+}
+
+button.hamburger[aria-expanded=true] .hamburger_2 {
+  top: 6px;
+  transform: translate(18px);
+}
+
+button.hamburger[aria-expanded=true] .hamburger_3 {
+  top: 6px;
+  transform: translate(0) rotate(135deg);
+}

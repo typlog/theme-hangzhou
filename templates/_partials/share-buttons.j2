@@ -1,0 +1,23 @@
+<div class="share-buttons">
+  <a class="js-share" data-type="x" href="#" aria-label="Share to Twitter (X)">
+    <iconify-icon icon="prime:twitter" />
+  </a>
+  {% if note.lang.startswith('zh') %}
+  <a class="js-share" data-type="weibo" href="#" aria-label="分享到微博">
+    <iconify-icon icon="simple-icons:sinaweibo" />
+  </a>
+  <a class="js-share" data-type="wechat" href="#" aria-label="分享到微信">
+    <iconify-icon icon="simple-icons:wechat" />
+  </a>
+  {% else %}
+  <a class="js-share" data-type="bluesky" href="#" aria-label="Share to Bluesky">
+    <iconify-icon icon="simple-icons:bluesky" />
+  </a>
+  <a class="js-share" data-type="facebook" href="#" aria-label="Share to Facebook">
+    <iconify-icon icon="simple-icons:facebook" />
+  </a>
+  {% endif %}
+  <a class="js-share" data-type="telegram" href="#" aria-label="Share to Telegram">
+    <iconify-icon icon="simple-icons:telegram" />
+  </a>
+</div>

@@ -1,0 +1,7 @@
+@import "./components/info-card.css";
+
+.entry-list {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--gray-a3);
+}

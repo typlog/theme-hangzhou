@@ -1,0 +1,40 @@
+{% from "macros/links.j2" import render_section_links, render_icon_links %}
+
+{% if theme_foot_links %}
+<div class="site-foot has-foot-links">
+  <div class="site-foot_content">
+    <div class="site-foot_logo">
+      {% include "components/site-logo.j2" %}
+    </div>
+    <div class="site-foot_links">
+      {{ render_section_links(theme_foot_links) }}
+    </div>
+  </div>
+  <div class="site-foot_copyright">
+    {% if theme_copyright %}
+      <div>{{ theme_copyright|safe }}</div>
+    {% endif %}
+    {{ render_icon_links(theme_social_links) }}
+  </div>
+</div>
+{% else %}
+<div class="site-foot">
+  <div class="site-foot_content">
+    <div class="site-foot_logo">
+      {% include "components/site-logo.j2" %}
+    </div>
+    <div class="site-foot_links">
+      <a href="/archive/">{{ translate('archive') }}</a>
+      {% for column in query.all_columns() %}
+        <a href="{{ column.url }}">{{ column.title }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="site-foot_copyright">
+    {% if theme_copyright %}
+      <div>{{ theme_copyright|safe }}</div>
+    {% endif %}
+    {{ render_icon_links(theme_social_links) }}
+  </div>
+</div>
+{% endif %}

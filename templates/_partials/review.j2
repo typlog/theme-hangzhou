@@ -1,0 +1,19 @@
+<div class="review">
+  {% if note.review.item_image %}
+    <img referrerpolicy="no-referrer" src="{{ note.review.item_image }}" alt="{{ note.review.item_name }}" loading="lazy" width="120" />
+  {% endif %}
+  <div class="review-item">
+    <h3 class="review-item-name">{{ note.review.item_name }}</h3>
+    {% if note.review.item_author %}
+      <div class="review-item-author">{{ note.review.item_author }}</div>
+    {% endif %}
+    {% if note.review.rating %}
+      <div class="review-rating">
+        <span>{{ '★'|repeat(note.review.rating) }}</span><span>{{ '☆'|repeat(5 - note.review.rating) }}</span>
+      </div>
+    {% endif %}
+    {% if note.review.item_data.description %}
+      <div class="review-item-description">{{ note.review.item_data.description }}</div>
+    {% endif %}
+  </div>
+</div>

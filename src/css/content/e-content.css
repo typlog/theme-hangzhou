@@ -1,0 +1,219 @@
+.e-content {
+  font-family: merriweather, var(--system-serif), var(--system-cjk), serif;
+  font-size: 18px;
+  line-height: 1.62;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+:where(.e-content) > div {
+  margin-bottom: 1rem;
+}
+
+.e-content h1,
+.e-content h2,
+.e-content h3,
+.e-content h4,
+.e-content h5,
+.e-content h6 {
+  color: var(--heading-color);
+}
+
+.e-content h1 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin: 0 0 3rem;
+}
+
+.e-content h2 {
+  font-weight: 700;
+  font-size: 1.42rem;
+  margin-top: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.e-content h3 {
+  font-weight: 500;
+  font-size: 1.17rem;
+  margin-top: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.e-content h4,
+.e-content h5,
+.e-content h6 {
+  font-weight: 500;
+  font-size: 1rem;
+  margin-top: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.e-content h6 {
+  font-weight: 500;
+}
+
+.e-content p {
+  margin-top: 0;
+  margin-bottom: 1.12rem;
+  hyphens: auto;
+}
+
+.e-content h1 a, .e-content h2 a, .e-content h3 a {
+  text-decoration: none;
+}
+
+.e-content strong,
+.e-content b {
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.e-content em,
+.e-content i {
+  font-style: italic;
+  color: var(--heading-color);
+}
+
+.e-content a img {
+  border: none;
+  vertical-align: middle;
+}
+
+.e-content a {
+  color: var(--gray-12);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-9);
+}
+
+.e-content a:hover {
+  color: var(--accent-9);
+}
+
+.e-content img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.e-content del {
+  color: var(--gray-11);
+  text-decoration: line-through;
+  text-decoration-color: var(--accent-9);
+}
+
+.e-content a:hover,
+.e-content a:hover > em,
+.e-content a:hover > strong {
+  color: var(--accent-9);
+}
+
+.e-content figure {
+  margin: 0;
+}
+.e-content figcaption {
+  margin-top: 4px;
+  font-size: 13px;
+  text-align: center;
+  color: var(--gray-10);
+}
+.e-content figcaption a {
+  color: var(--gray-10);
+}
+.e-content figcaption a:hover {
+  color: var(--accent-9);
+}
+
+.e-content hr {
+  display: block;
+  width: 90%;
+  max-width: 100px;
+  border: 0;
+  border-top: 5px solid var(--gray-a3);
+  margin: 2.4rem auto;
+}
+
+.e-content blockquote {
+  position: relative;
+  margin: 0 0 1.64rem 0;
+  padding: 34px 1rem 0.1rem 20px;
+  font-size: 1.12rem;
+  border-left: 4px solid var(--accent-9);
+}
+.e-content blockquote::before {
+  content: '\201c';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  color: var(--accent-9);
+  font: bold 48px/1 "Times New Roman", Georgia, Palatino, Times, serif;
+}
+
+.e-content ul,
+.e-content ol {
+  margin: 0 0 24px 6px;
+  padding-left: 16px;
+}
+
+.e-content ul {
+  list-style-type: disc;
+}
+
+.e-content ol {
+  list-style-type: decimal;
+}
+
+.e-content li {
+  margin-bottom: 0.2rem;
+}
+
+.e-content li::marker {
+  color: var(--gray-10);
+}
+
+.e-content li ul,
+.e-content li ol {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.e-content li p {
+  margin: 0.4rem 0 0.6rem;
+}
+
+.e-content li > code,
+.e-content p > code,
+.e-content p > tt {
+  font-size: 0.86rem;
+  font-family: var(--default-mono-font-family);
+  font-weight: 600;
+  padding: 1px 3px;
+  word-wrap: break-word;
+  border-radius: 2px;
+}
+
+.e-content pre {
+  font-family: var(--default-mono-font-family);
+}
+
+.e-content iframe {
+  display: block;
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.e-content figure iframe {
+  margin: auto;
+}
+
+:lang(zh) .e-content em,
+:lang(zh-hant) .e-content em,
+:lang(zh-hans) .e-content em,
+:lang(ja) .e-content em {
+  font-style: normal;
+  text-emphasis: filled dot var(--gray-10);
+  text-emphasis-position: under;
+}
+.e-content em:lang(en) {
+  font-style: italic !important;
+  text-emphasis: none !important;
+}

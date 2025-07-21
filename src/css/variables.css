@@ -1,0 +1,26 @@
+@import '@radix-ui/colors/gray.css';
+@import '@radix-ui/colors/gray-dark.css';
+@import '@radix-ui/colors/gray-alpha.css';
+@import '@radix-ui/colors/gray-dark-alpha.css';
+
+:root {
+  --text-color: var(--gray-12);
+  --heading-color: #000;
+  --background-color: #fff;
+  --base-font: roboto, var(--system-sans), var(--system-cjk), sans-serif;
+  --heading-font: nunito-sans, var(--system-sans), var(--system-cjk), sans-serif;
+  --content-font: merriweather, var(--system-serif), var(--system-cjk), serif;
+}
+
+.dark {
+  --text-color: var(--gray-12);
+  --heading-color: #fff;
+  --background-color: #212328;
+}
+
+.ui-root [data-section] {
+  --section-inner-max-width: 1400px;
+  --section-padding-inline-xs: 1.5rem;
+  --section-padding-inline-start: 1.5rem;
+  --section-padding-inline-end: 1.5rem;
+}

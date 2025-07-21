@@ -1,0 +1,56 @@
+{% block styles %}
+<link rel="preconnect" href="https://use.typkit.net">
+<link rel="stylesheet" href="https://use.typekit.net/zbe5yhf.css">
+<link rel="stylesheet" href="{{ _static_url }}/content.css">
+{% include "components/clipboard-copy.j2" %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ _static_url }}/app.js" type="module"></script>
+{% include "components/iconify-icon.j2" %}
+{% include "components/lightbox.j2" %}
+{% endblock %}
+
+{% block body %}
+  {% include "./_layouts/site-head.j2" %}
+  <div class="container">
+    <article role="main" class="h-entry">
+      <div class="entry-meta">
+        {% if note.note_type == 'audio' %}
+          {% set episode = note.audio %}
+          {% if episode.season and episode.episode %}
+            <span class="item-label">S{{ episode.season }}E{{ episode.episode }}</span>
+          {% endif %}
+          <span class="item-label">{{ episode.audio.duration|durationformat }}</span>
+        {% endif %}
+        {% if note.published_at %}
+          <time class="dt-published" datetime="{{ note.published_at|xmldatetime }}">{{ note.published_at|dateformat('%b %d, %Y') }}</time>
+        {% endif %}
+        {% if column %}
+          <a class="column" href="{{ column.url }}">{{ column.title }}</a>
+        {% endif %}
+      </div>
+      <h1 class="p-name">{{ note.title }}</h1>
+      {% if note.subtitle %}
+        <h2 class="p-summary">{{ note.subtitle }}</h2>
+      {% endif %}
+      {% if note.review %}
+        {% include "./_partials/review.j2" %}
+      {% endif %}
+      <div class="e-content">
+        {% include "components/audio-player.j2" %}
+        {{ note.content }}
+      </div>
+      {% include "./_partials/entry-tags.j2" %}
+    </article>
+    <div class="entry-actions">
+      {% include "./_partials/enjoy-button.j2" %}
+      {% include "./_partials/share-buttons.j2" %}
+    </div>
+    {% include "./_partials/previous-entry.j2" %}
+    <section class="entry-comments">
+      {% include "components/web-comment.j2" %}
+    </section>
+  </div>
+  {% include "./_layouts/site-foot.j2" %}
+{% endblock %}

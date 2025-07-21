@@ -1,0 +1,29 @@
+.entry-tags {
+  margin: 1.6em 0 1.2em;
+}
+
+.entry-tags a {
+  display: inline-block;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: 14px;
+  color: var(--gray-11);
+  background: var(--gray-a3);
+  padding: 0.4rem 0.8rem;
+  font-weight: 500;
+}
+
+.entry-tags a:before {
+  content: '#';
+  font-weight: 900;
+  color: var(--gray-5);
+  margin-right: 2px;
+}
+.entry-tags a:hover {
+  text-decoration: none;
+  color: var(--accent-1);
+  background: var(--accent-a9);
+}
+.entry-tags a + a {
+  margin-left: 4px;
+}

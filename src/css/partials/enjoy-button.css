@@ -1,0 +1,103 @@
+@keyframes heartbeat {
+  0% {
+    transform: scale(.75);
+    opacity: 1;
+  }
+  15% {
+    transform: scale(1);
+    opacity: .8;
+  }
+
+  30% {
+    transform: scale(.75);
+    opacity: 1;
+  }
+
+  45% {
+    transform: scale(1.5);
+    opacity: .6;
+  }
+  100% {
+    transform: scale(.75);
+    opacity: .8;
+  }
+}
+@keyframes scale-up {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(10);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.enjoy-button button {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--gray-11);
+  background-color: transparent;
+  border: 3px solid var(--gray-a5);
+  line-height: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: background-color, color 0.2s ease;
+  text-transform: uppercase;
+  outline: 0;
+}
+
+.enjoy-button button:hover {
+  cursor: pointer;
+  outline: initial;
+}
+
+.enjoy-button button:after {
+  content: "\2665";
+  user-select: none;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-size: 20px;
+  opacity: 0;
+  color: var(--accent-9);
+}
+
+.enjoy-button button:hover:after {
+  animation: heartbeat 1s infinite;
+}
+
+.enjoy-button button:disabled {
+  border-color: var(--accent-9);
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
+  transition-property: color, background-color;
+  transition-delay: 0s, 1s;
+  transition-timing-function: ease-in;
+  transition-duration: 0.5s, 0s;
+
+}
+
+.enjoy-button button:disabled:after {
+  animation: scale-up 2s;
+}
+
+.enjoy-button button i {
+  font-style: normal;
+  margin-left: 6px;
+}
