@@ -35,7 +35,7 @@ function resolveHeading (el) {
     return {level, title, id: el.id}
   }
 
-  const id = encodeURIComponent(title.replace(/\s+/g, '-')).replaceAll('%', '-').replace(/^-/, '')
+  const id = encodeURIComponent(title.toLowerCase().replace(/\s+/g, '-')).replaceAll('%', '-').replace(/^-/, '')
   el.id = id
   const anchor = document.createElement('a')
   anchor.className = 'heading-anchor'
@@ -43,7 +43,7 @@ function resolveHeading (el) {
   anchor.setAttribute('aria-label', `Permalink to "${title}"`)
   anchor.innerHTML = '<span class="anchor-icon">' + LINK_ICON + '</span>'
   el.appendChild(anchor)
-  return {level, title, id: el.id}
+  return {level, title, id}
 }
 
 /**

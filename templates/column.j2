@@ -1,6 +1,7 @@
 {% block styles %}
 {% include "./_partials/webfonts.j2" %}
 <link rel="stylesheet" href="{{ _static_url }}/base.css">
+<link rel="stylesheet" href="{{ _static_url }}/column.css">
 {% endblock %}
 
 {% block scripts %}
@@ -17,34 +18,49 @@
     </div>
   </div>
   <main id="main" class="flex max-w-6xl mx-auto pt-28 lg:pt-14 pb-10 lg:px-8">
-    <div id="content-container" class="grow overflow-x-hidden px-6 @container">
+    <div id="content-container" class="grow px-6 @container">
       <section class="relative min-w-0 shrink pt-8">
         <h1 class="text-4xl font-bold">{{ column.title }}</h1>
         {% if column.subtitle %}
           <h2 class="mt-2 text-lg text-gray-11">{{ column.subtitle }}</h2>
         {% endif %}
-        <div class="mt-10 flex-1 grid grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-3 @5xl:grid-cols-4 gap-5">
-          {% if pagination.items %}
-            {% for note in pagination.items %}
-              <a class="block border rounded-lg overflow-hidden hover:border-gray-a5" href="{{ note.url }}">
-                {% if column.metadata.cover %}
-                  <div class="flex w-full h-28">
-                    {% if note.cover %}
-                      <div class="js-cover bg-cover bg-no-repeat bg-center w-full h-full" data-src="{{ note.cover|thumbnail }}"></div>
-                    {% endif %}
+      </section>
+      <div class="post-cards mt-10 js-masonry">
+        {% if pagination.items %}
+          {% for note in pagination.items %}
+            {%- set grid_area = 7 -%}
+            {%- if note.subtitle -%}
+            {%- set grid_area = grid_area + 1 %}
+            {%- endif -%}
+            {%- if note.cover -%}
+            {%- set grid_area = grid_area + 9 %}
+            {%- endif -%}
+            <a class="post-card" href="{{ note.url }}" style="grid-row-end: span {{ grid_area }}">
+              {% if note.cover %}
+                <div class="post-card-image">
+                  <div class="js-cover" data-src="{{ note.cover|thumbnail }}"></div>
+                </div>
+              {% endif %}
+              <div class="py-5 px-6">
+                {% if note.tags %}
+                  <div class="flex mb-3 gap-1.5 text-xs">
+                    {% for tag in note.tags %}
+                    <span class="py-0.5 px-1.5 bg-gray-a3 text-gray-a11 rounded font-medium">{{ tag.title }}</span>
+                    {% endfor %}
                   </div>
                 {% endif %}
-                <div class="p-4">
-                  <div class="text-sm font-medium">{{ note.title }}</div>
-                  {% if note.subtitle %}
-                    <div class="text-xs text-gray-11 mt-2">{{ note.subtitle }}</div>
-                  {% endif %}
-                </div>
-              </a>
-            {% endfor %}
-          {% endif %}
-        </div>
-      </section>
+                <div class="font-medium">{{ note.title }}</div>
+                {% if note.subtitle %}
+                  <div class="text-sm text-gray-11 mt-2">{{ note.subtitle }}</div>
+                {% endif %}
+              </div>
+              <div class="mt-4 px-6 pb-6 text-xs text-gray-10">
+                <time class="js-time" datetime="{{ note.published_at|xmldatetime }}">{{ note.published_at|dateformat('%b %d, %Y') }}</time>
+              </div>
+            </a>
+          {% endfor %}
+        {% endif %}
+      </div>
     </div>
   </main>
   {% include "./_layouts/footer.j2" %}

@@ -235,7 +235,7 @@
 .e-content details {
   background: var(--background-color);
   border: 1px solid var(--gray-a4);
-  border-radius: 8px;
+  border-radius: 6px;
   margin: 1rem 0;
   overflow: hidden;
   transition: all 0.2s ease;
@@ -252,7 +252,9 @@
 .e-content summary {
   padding: 1rem 1.25rem;
   cursor: pointer;
+  font-size: 0.875em;
   font-weight: 500;
+  font-family: var(--heading-font);
   color: var(--heading-color);
   border-bottom: 1px solid transparent;
   transition: all 0.2s ease;
@@ -274,7 +276,7 @@
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-top: 8px solid var(--gray-4);
+  border-top: 8px solid var(--gray-a5);
   transition: transform 0.2s ease;
 }
 
