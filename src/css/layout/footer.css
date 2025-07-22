@@ -1,4 +1,4 @@
-.site-foot_logo img {
+.footer-logo img {
   vertical-align: middle;
 }
 
@@ -12,7 +12,7 @@
   text-decoration: underline;
 }
 
-.site-foot_socials .icon-links {
+.footer-socials .icon-links {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -22,7 +22,7 @@
   font-size: 1.25rem;
 }
 
-.site-foot_socials .icon-links a:hover {
+.footer-socials .icon-links a:hover {
   color: var(--gray-12);
 }
 

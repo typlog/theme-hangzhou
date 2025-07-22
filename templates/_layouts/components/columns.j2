@@ -1,0 +1,28 @@
+{%- if columns|count > 1 -%}
+  <div class="hidden lg:flex justify-between px-4 lg:px-12 h-12">
+    <div class="w-full h-full flex justify-between border-t">
+      <div class="nav-tabs h-full flex text-sm space-x-6">
+        {% for item in columns %}
+          <a class="nav-tabs-item{% if column.id == item.id %} active{% endif %}"
+            href="{% if item.metadata.url %}{{ item.metadata.url }}{% else %}{{ item.url }}{% endif %}"
+          >
+            {% if item.metadata.icon %}
+              <iconify-icon icon="{{ item.metadata.icon }}"></iconify-icon>
+            {% endif %}
+            <span>{{ item.title }}</span>
+          </a>
+        {% endfor %}
+      </div>
+      <div class="flex items-center xl:hidden">
+        <button class="js-menu flex items-center gap-1 text-sm" aria-expanded="false" aria-controls="doc-outline">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 6h10"/>
+            <path d="M6 12h9"/>
+            <path d="M11 18h7"/>
+          </svg>
+          <span class="font-medium text-gray-11">{{ translate('onthispage') }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+{%- endif -%}

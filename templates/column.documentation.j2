@@ -1,8 +1,20 @@
+{% set columns = query.filter_columns(type=column.type, lang=column.lang) %}
+{%- if column.metadata.config -%}
+{% set column_config = query.parse_json_asset(column.metadata.config) %}
+{%- else -%}
+{% set column_config = None %}
+{%- endif -%}
+
+{%- if column_config and column_config.sidebar -%}
+{% set has_sidebar = True %}
+{%- else -%}
+{% set has_sidebar = False %}
+{%- endif -%}
+
 {% block styles %}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ _static_url }}/content.css">
+{% include "./_partials/webfonts.j2" %}
+<link rel="stylesheet" href="{{ _static_url }}/base.css">
+<link rel="stylesheet" href="{{ _static_url }}/docs.css">
 {% endblock %}
 
 {% block scripts %}
@@ -10,10 +22,56 @@
 {% include "components/iconify-icon.j2" %}
 {% endblock %}
 
-{% set columns = query.filter_columns(type=column.type, lang=column.lang) %}
 
 {% block body %}
-  {% include "./_layouts/doc-head.j2" %}
-  <div>hahah</div>
-  {% include "./_layouts/site-foot.j2" %}
+  <div id="navbar" class="z-30 fixed lg:sticky top-0 w-full">
+    <div id="navbar-backdrop" class="absolute w-full h-full backdrop-blur border-b"></div>
+    <div class="mx-auto max-w-content relative">
+      {% include "./_layouts/components/nav-head.j2" %}
+      {% include "./_layouts/components/nav-menu.j2" %}
+      {% include "./_layouts/components/columns.j2" %}
+    </div>
+  </div>
+  <main id="main" class="flex mx-auto pt-28 pb-10 lg:pt-0 lg:px-8
+    {%- if has_sidebar %} max-w-content{% else %} max-w-6xl{% endif -%}
+  ">
+    {% if has_sidebar %}
+      {% include "./_layouts/doc-sidebar.j2" %}
+    {% endif %}
+    <div id="content-container" class="grow overflow-x-hidden px-6 @container">
+      <section class="relative min-w-0 shrink pt-8">
+        <h1 class="text-4xl font-bold">{{ column.title }}</h1>
+        {% if column.subtitle %}
+          <h2 class="mt-2 text-lg text-gray-11">{{ column.subtitle }}</h2>
+        {% endif %}
+        {% if column_config and column_config.introduction %}
+          <div class="e-content">
+            {{ column_config.introduction|markdown }}
+          </div>
+        {% endif %}
+        <div class="mt-10 flex-1 grid grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-3 @5xl:grid-cols-4 gap-5">
+          {% if pagination.items %}
+            {% for note in pagination.items %}
+              <a class="block border rounded-lg overflow-hidden hover:border-gray-a5" href="{{ note.url }}">
+                {% if column.metadata.cover %}
+                  <div class="flex w-full h-28">
+                    {% if note.cover %}
+                      <div class="js-cover bg-cover bg-no-repeat bg-center w-full h-full" data-src="{{ note.cover|thumbnail }}"></div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+                <div class="p-4">
+                  <div class="text-sm font-medium">{{ note.title }}</div>
+                  {% if note.subtitle %}
+                    <div class="text-xs text-gray-11 mt-2">{{ note.subtitle }}</div>
+                  {% endif %}
+                </div>
+              </a>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </section>
+    </div>
+  </main>
+  {% include "./_layouts/footer.j2" %}
 {% endblock %}

@@ -11,7 +11,6 @@
 {% endblock %}
 
 {% block body %}
-  {% include "./_layouts/site-head.j2" %}
   <div class="container">
     <section class="info-card">
       <h1>{{ translate('archive') }}</h1>
@@ -25,5 +24,5 @@
       {% include "./_partials/navigation.j2" %}
     </div>
   </div>
-  {% include "./_layouts/site-foot.j2" %}
+  {% include "./_layouts/footer.j2" %}
 {% endblock %}

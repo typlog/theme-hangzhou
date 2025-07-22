@@ -1,7 +1,7 @@
 {% from "macros/icons.j2" import render_icon %}
 
 {% macro render_sidebar_item(item) %}
-<div class="sidebar-item{% if item.link == note.url %} active{% endif %}">
+<div class="sidebar-item{% if note and item.link == note.url %} active{% endif %}">
   <a href="{{ item.link }}">
     {% if item.icon %}{{ render_icon(item.icon) }}{% endif %}
     <span class="link-text">{{ item.title }}</span>
@@ -12,9 +12,9 @@
 </div>
 {% endmacro %}
 
-<div id="doc-sidebar" class="z-20 hidden shrink-0 lg:block w-[18rem]">
+<div id="doc-sidebar" class="z-20 hidden shrink-0 lg:block lg:pr-4 w-[18rem]">
   <div class="w-full lg:sticky lg:top-(--navbar-height)">
-    <div class="lg:hidden flex flex-col gap-1">
+    <div class="lg:hidden flex flex-col gap-1 border-b pb-6">
       {% for item in columns %}
         <a class="flex items-center gap-2 px-4 py-2 text-sm"
           href="{% if item.metadata.url %}{{ item.metadata.url }}{% else %}{{ item.url }}{% endif %}"

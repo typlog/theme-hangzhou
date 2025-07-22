@@ -1,29 +1,30 @@
 {% from "macros/links.j2" import render_nav_links %}
-<div class="site-head flex items-center justify-between lg:px-12 h-16 min-w-0 mx-4 lg:mx-0">
-  <a class="site-head_brand" href="/">
+
+<div class="nav-head flex items-center justify-between lg:px-12 h-16 min-w-0 mx-4 lg:mx-0">
+  <a class="nav-head-brand" href="/">
     {% include "components/site-logo.j2" %}
   </a>
   <div class="hidden md:flex md:pl-6 items-center grow justify-between">
     {{ render_nav_links(theme_nav_links) }}
   </div>
   <div class="flex items-center gap-x-2">
-    {% include "./components/searchbox.j2" %}
+    {% include "./searchbox.j2" %}
     {% if theme_nav_actions %}
-    <div class="hidden md:flex items-center site-head_actions">
+    <div class="hidden md:flex items-center nav-head-actions">
       {{ render_nav_links(theme_nav_actions) }}
     </div>
     {% endif %}
-    {% include "./components/theme-switch.j2" %}
+    {% include "./theme-switch.j2" %}
     {% if theme_nav_links or theme_nav_actions %}
-      {% include "./components/hamburger.j2" %}
+      {% include "./hamburger.j2" %}
     {% endif %}
   </div>
 </div>
-<div id="mobile-navbar" class="mobile-site-head md:hidden" aria-hidden="true">
+<div id="mobile-navbar" class="mobile-nav-head md:hidden" aria-hidden="true">
   <div class="max-w-sm mx-auto">
     {{ render_nav_links(theme_nav_links, 'mobile-nav') }}
     {% if theme_nav_actions %}
-      <div class="site-head_actions flex items-center justify-center border-t mt-10 py-4">
+      <div class="nav-head-actions flex items-center justify-center border-t mt-10 py-4">
         {{ render_nav_links(theme_nav_actions) }}
       </div>
     {% endif %}

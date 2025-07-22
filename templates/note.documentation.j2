@@ -14,9 +14,8 @@
 {%- endif -%}
 
 {% block styles %}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+{% include "./_partials/webfonts.j2" %}
+<link rel="stylesheet" href="{{ _static_url }}/base.css">
 <link rel="stylesheet" href="{{ _static_url }}/docs.css">
 {% include "components/clipboard-copy.j2" %}
 <style>:root{--navbar-height: 112px}</style>
@@ -32,19 +31,28 @@
 {% endblock %}
 
 {% block body %}
-  {% include "./_layouts/doc-head.j2" %}
-  <main id="main" class="max-w-content flex mx-auto pt-28 lg:pt-0 lg:px-8">
-    {% if column_config and column_config.sidebar %}
+  <div id="navbar" class="z-30 fixed lg:sticky top-0 w-full">
+    <div id="navbar-backdrop" class="absolute w-full h-full backdrop-blur border-b"></div>
+    <div class="mx-auto max-w-content relative">
+      {% include "./_layouts/components/nav-head.j2" %}
+      {% include "./_layouts/components/nav-breadcrumbs.j2" %}
+      {% include "./_layouts/components/columns.j2" %}
+    </div>
+  </div>
+  <main id="main" class="flex mx-auto pt-28 pb-10 lg:pt-0 lg:px-8
+    {%- if has_sidebar %} max-w-content{% else %} max-w-6xl{% endif -%}
+  ">
+    {% if has_sidebar %}
       {% include "./_layouts/doc-sidebar.j2" %}
     {% endif %}
-    <div id="content-container" class="grow overflow-x-hidden px-6 lg:pl-10">
-      <article class="relative grow min-w-0 shrink pt-8">
+    <div id="content-container" class="grow overflow-x-hidden px-6">
+      <article class="relative min-w-0 shrink pt-8">
         <div class="mb-2 uppercase text-sm font-semibold text-accent-10">{{ column.title }}</div>
-        <h1 class="p-name text-4xl font-bold">{{ note.title }}</h1>
+        <h1 class="p-name text-2xl lg:text-4xl font-bold">{{ note.title }}</h1>
         {% if note.subtitle %}
           <h2 class="p-summary mt-2 text-lg text-gray-11">{{ note.subtitle }}</h2>
         {% endif %}
-        <div class="e-content">
+        <div class="e-content font-serif lg:text-lg">
           {{ note.content }}
         </div>
       </article>
@@ -64,5 +72,5 @@
       </div>
     </aside>
   </main>
-  {% include "./_layouts/site-foot.j2" %}
+  {% include "./_layouts/footer.j2" %}
 {% endblock %}

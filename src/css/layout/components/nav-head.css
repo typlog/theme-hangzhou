@@ -1,28 +1,21 @@
-@import "./components/nav-links.css";
-@import "./components/theme-switch.css";
-@import "./components/hamburger.css";
-@import "./components/aria-tip.css";
-@import "./components/button.css";
-@import "./components/docsearch.css";
-
 body[data-expanded*="mobile-navbar"] {
   overflow: hidden;
 }
 
-.site-head_brand {
+.nav-head-brand {
   display: flex;
   align-items: center;
 }
 
-.site-head_brand img {
+.nav-head-brand img {
   height: 30px;
 }
 
-.site-head_brand img + strong {
+.nav-head-brand img + strong {
   display: none;
 }
 
-.site-head_actions li:last-of-type > a {
+.nav-head-actions li:last-of-type > a {
   background-color: var(--accent-10);
   color: var(--accent-contrast);
   border-radius: 48px;
@@ -31,11 +24,11 @@ body[data-expanded*="mobile-navbar"] {
   font-weight: 500;
 }
 
-.site-head_actions li:last-of-type > a:hover {
+.nav-head-actions li:last-of-type > a:hover {
   opacity: 0.85;
 }
 
-.mobile-site-head {
+.mobile-nav-head {
   position: absolute;
   top: 64px;
   left: 0;
@@ -46,11 +39,11 @@ body[data-expanded*="mobile-navbar"] {
   z-index: 30;
 }
 
-.mobile-site-head[aria-hidden="true"] {
+.mobile-nav-head[aria-hidden="true"] {
   height: 0;
   visibility: hidden;
 }
 
-.mobile-site-head .nav-links {
+.mobile-nav-head .nav-links {
   gap: 2rem;
 }

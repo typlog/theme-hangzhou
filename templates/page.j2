@@ -10,9 +10,8 @@
 {% endblock %}
 
 {% block body %}
-  {% include "./_layouts/site-head.j2" %}
   <div class="ui-root" data-page-container data-radius="medium" data-scaling="100%" data-has-background="true">
     {{ body }}
   </div>
-  {% include "./_layouts/site-foot.j2" %}
+  {% include "./_layouts/footer.j2" %}
 {% endblock %}
