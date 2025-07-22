@@ -6,12 +6,12 @@
       <div class="footer-logo shrink-0 flex items-center gap-4 md:flex-col md:items-start">
         {% if site.glyph_logo_light %}
           <span class="w-10 h-10 lg:w-16 lg:h-16 light-logo{% if not site.glyph_logo_dark %} dark-logo{% endif %}">
-            <img width="64" height="64" src="{{ site.glyph_logo_light|thumbnail('ss') }}" loading="lazy" alt="{{ site.name }}"/>
+            <img class="rounded-md" width="64" height="64" src="{{ site.glyph_logo_light|thumbnail('ss') }}" loading="lazy" alt="{{ site.name }}"/>
           </span>
         {% endif %}
         {% if site.glyph_logo_dark %}
           <span class="w-10 h-10 lg:w-16 lg:h-16 dark-logo">
-            <img width="64" height="64" src="{{ site.glyph_logo_dark|thumbnail('ss') }}" loading="lazy" alt="{{ site.name }}"/>
+            <img class="rounded-md" width="64" height="64" src="{{ site.glyph_logo_dark|thumbnail('ss') }}" loading="lazy" alt="{{ site.name }}"/>
           </span>
         {% endif %}
         <strong class="text-2xl font-black md:hidden">{{ site.name }}</strong>

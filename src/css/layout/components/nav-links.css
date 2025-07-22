@@ -181,6 +181,13 @@ ul.nav-links {
   background-color: transparent;
 }
 
+.mobile-nav-link > a {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  gap: 0.25rem;
+}
+
 .mobile-nav-link + .mobile-nav-link  {
   border-top: 1px solid var(--gray-a3);
 }

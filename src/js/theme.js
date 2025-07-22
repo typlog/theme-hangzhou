@@ -24,6 +24,9 @@ function updateLabel (mode) {
 }
 
 if (el) {
-  el.addEventListener('click', rotateColorMode)
+  el.addEventListener('click', (e) => {
+    e.stopPropagation()
+    rotateColorMode()
+  })
   updateLabel(COLOR_MODES[getModeIndex()] || 'auto')
 }

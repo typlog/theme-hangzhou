@@ -1,26 +1,51 @@
 {% block styles %}
-<link rel="preconnect" href="https://use.typkit.net">
-<link rel="stylesheet" href="https://use.typekit.net/zbe5yhf.css">
+{% include "./_partials/webfonts.j2" %}
 <link rel="stylesheet" href="{{ _static_url }}/base.css">
 {% endblock %}
 
 {% block scripts %}
 <script src="{{ _static_url }}/app.js" type="module"></script>
 {% include "components/iconify-icon.j2" %}
-{% include "components/lightbox.j2" %}
 {% endblock %}
 
+
 {% block body %}
-  <div class="container">
-    {% include "./_partials/column-info.j2" %}
-    <div class="entry-list js-lightbox">
-      {% if pagination.items %}
-        {% for note in pagination.items %}
-          {% include "./_partials/entry-item.j2" %}
-        {% endfor %}
-      {% endif %}
-      {% include "./_partials/navigation.j2" %}
+  <div id="navbar" class="z-30 fixed lg:sticky top-0 w-full">
+    <div id="navbar-backdrop" class="absolute w-full h-full backdrop-blur border-b"></div>
+    <div class="mx-auto max-w-content relative">
+      {% include "./_layouts/components/nav-head.j2" %}
     </div>
   </div>
+  <main id="main" class="flex max-w-6xl mx-auto pt-28 lg:pt-14 pb-10 lg:px-8">
+    <div id="content-container" class="grow overflow-x-hidden px-6 @container">
+      <section class="relative min-w-0 shrink pt-8">
+        <h1 class="text-4xl font-bold">{{ column.title }}</h1>
+        {% if column.subtitle %}
+          <h2 class="mt-2 text-lg text-gray-11">{{ column.subtitle }}</h2>
+        {% endif %}
+        <div class="mt-10 flex-1 grid grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-3 @5xl:grid-cols-4 gap-5">
+          {% if pagination.items %}
+            {% for note in pagination.items %}
+              <a class="block border rounded-lg overflow-hidden hover:border-gray-a5" href="{{ note.url }}">
+                {% if column.metadata.cover %}
+                  <div class="flex w-full h-28">
+                    {% if note.cover %}
+                      <div class="js-cover bg-cover bg-no-repeat bg-center w-full h-full" data-src="{{ note.cover|thumbnail }}"></div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+                <div class="p-4">
+                  <div class="text-sm font-medium">{{ note.title }}</div>
+                  {% if note.subtitle %}
+                    <div class="text-xs text-gray-11 mt-2">{{ note.subtitle }}</div>
+                  {% endif %}
+                </div>
+              </a>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </section>
+    </div>
+  </main>
   {% include "./_layouts/footer.j2" %}
 {% endblock %}

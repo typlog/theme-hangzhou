@@ -9,19 +9,31 @@ body[data-expanded*="mobile-navbar"] {
 
 .nav-head-brand img {
   height: 30px;
+  border-radius: 4px;
 }
 
 .nav-head-brand img + strong {
   display: none;
 }
 
+.mobile-nav-head .nav-head-actions a {
+  height: 34px;
+  border-radius: 48px;
+  padding: 0.25rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 2px solid var(--gray-a5);
+}
+
 .nav-head-actions li:last-of-type > a {
+  height: 34px;
   background-color: var(--accent-10);
   color: var(--accent-contrast);
   border-radius: 48px;
-  padding: 0.4rem 1rem;
+  padding: 0.25rem 1rem;
   font-size: 0.875rem;
   font-weight: 500;
+  border: 2px solid var(--accent-10);
 }
 
 .nav-head-actions li:last-of-type > a:hover {

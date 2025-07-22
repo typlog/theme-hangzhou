@@ -60,7 +60,7 @@ body[data-expanded*="doc-sidebar"] {
 }
 .sidebar-item.active a {
   font-weight: var(--font-weight-medium);
-  color: var(--accent-a10);
+  color: var(--accent-a11);
   background-color: var(--accent-a3);
 }
 .sidebar-item a:hover {
