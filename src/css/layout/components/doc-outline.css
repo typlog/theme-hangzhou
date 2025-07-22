@@ -10,10 +10,17 @@
     border: 1px solid var(--gray-a4);
     border-radius: 6px;
     z-index: 30;
+    max-height: calc(100vh - var(--navbar-height));
+    overflow: auto;
   }
   #doc-outline[aria-hidden="false"] {
     display: block;
   }
+}
+
+#aside {
+  scrollbar-width: none;
+  max-height: calc(100vh - var(--navbar-height));
 }
 
 .outline-marker {
@@ -41,4 +48,63 @@
 
 .outline-content a:hover {
   color: var(--gray-12);
+}
+
+.outline-content .level-3 {
+  padding-left: 0.875rem;
+}
+
+.outline-content .level-4 {
+  padding-left: 1.75rem;
+}
+
+.outline-content .level-5 {
+  padding-left: 2.625rem;
+}
+
+.outline-content .level-6 {
+  padding-left: 3.5rem;
+}
+
+/* style elements added by outline script */
+.e-content h1:hover .heading-anchor,
+.e-content h2:hover .heading-anchor,
+.e-content h3:hover .heading-anchor,
+.e-content h4:hover .heading-anchor,
+.e-content h5:hover .heading-anchor,
+.e-content h6:hover .heading-anchor {
+  visibility: visible;
+  opacity: 1;
+}
+
+.heading-anchor {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  text-decoration: none;
+  position: absolute;
+  left: -1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  height: auto;
+}
+
+.anchor-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.875rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--gray-9);
+  background-color: var(--background-color);
+  border: 1px solid var(--gray-a4);
+  border-radius: 4px;
+}
+
+.anchor-icon:hover {
+  background: var(--gray-1);
+  border-color: var(--gray-6);
 }

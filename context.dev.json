@@ -64,5 +64,70 @@
       "link": "https://open.spotify.com/show/5Z6Z9Z6Z6Z6Z6Z6Z6Z6Z6Z"
     }
   ],
+  "theme_foot_links": [
+    {
+      "caption": "Resources",
+      "links": [
+        {
+          "title": "Blog",
+          "link": "#"
+        },
+        {
+          "title": "Podcast",
+          "link": "#"
+        },
+        {
+          "title": "Changelog",
+          "link": "#"
+        },
+        {
+          "title": "Documentation",
+          "link": "#"
+        }
+      ]
+    },
+    {
+      "caption": "Resources",
+      "links": [
+        {
+          "title": "Blog",
+          "link": "#"
+        },
+        {
+          "title": "Podcast",
+          "link": "#"
+        },
+        {
+          "title": "Changelog",
+          "link": "#"
+        },
+        {
+          "title": "Documentation",
+          "link": "#"
+        }
+      ]
+    },
+    {
+      "caption": "Resources",
+      "links": [
+        {
+          "title": "Blog",
+          "link": "#"
+        },
+        {
+          "title": "Podcast",
+          "link": "#"
+        },
+        {
+          "title": "Changelog",
+          "link": "#"
+        },
+        {
+          "title": "Documentation",
+          "link": "#"
+        }
+      ]
+    }
+  ],
   "theme_copyright": "Copy &copy; 2024, <a href='https://typlog.com/'>Typlog</a>"
 }

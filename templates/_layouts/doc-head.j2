@@ -2,7 +2,6 @@
   <div id="navbar-backdrop" class="absolute w-full h-full backdrop-blur border-b"></div>
   <div class="mx-auto max-w-content relative">
     {% include "./site-head.j2" %}
-
     <div class="flex items-center justify-between h-12 py-4 px-5 lg:hidden border-t">
       <div class="flex text-sm leading-6 whitespace-nowrap min-w-0 space-x-3">
         <button class="js-menu inline-flex items-center gap-2 p-1" aria-label="{{ translate('menu') }}" aria-controls="doc-sidebar">
@@ -28,11 +27,12 @@
             <path d="M6 12h9"/>
             <path d="M11 18h7"/>
           </svg>
-          <span>{{ translate('onthispage') }}</span>
+          <span class="font-medium text-gray-11">{{ translate('onthispage') }}</span>
         </button>
       </div>
     </div>
 
+    {%- if columns|count > 1 -%}
     <div class="hidden lg:flex justify-between px-4 lg:px-12 h-12">
       <div class="w-full h-full flex justify-between border-t">
         <div class="nav-tabs h-full flex text-sm space-x-6">
@@ -54,11 +54,12 @@
               <path d="M6 12h9"/>
               <path d="M11 18h7"/>
             </svg>
-            <span>{{ translate('onthispage') }}</span>
+            <span class="font-medium text-gray-11">{{ translate('onthispage') }}</span>
           </button>
         </div>
       </div>
     </div>
+    {%- endif -%}
   </div>
 </div>
 <div id="doc-outline" class="js-outline xl:hidden outline-content"></div>

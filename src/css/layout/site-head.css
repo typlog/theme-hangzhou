@@ -5,7 +5,7 @@
 @import "./components/button.css";
 @import "./components/docsearch.css";
 
-body[data-expanded*="MobileNavbar"] {
+body[data-expanded*="mobile-navbar"] {
   overflow: hidden;
 }
 
@@ -27,7 +27,7 @@ body[data-expanded*="MobileNavbar"] {
   color: var(--accent-contrast);
   border-radius: 48px;
   padding: 0.4rem 1rem;
-  font-size: 0.825rem;
+  font-size: 0.875rem;
   font-weight: 500;
 }
 
