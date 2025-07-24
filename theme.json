@@ -1,9 +1,8 @@
 {
-  "name": "shibuya",
-  "name#ja": "渋谷",
-  "name#zh": "涉谷",
+  "name": "hangzhou",
+  "name#zh": "杭州",
   "version": "0.1.0",
-  "repo": "typlog/theme-shibuya",
+  "repo": "typlog/theme-hangzhou",
   "image": "",
   "description": "A theme for documentation.",
   "config": [
