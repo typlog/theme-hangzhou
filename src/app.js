@@ -1,6 +1,7 @@
 import "./js/theme"
 import "./js/menu"
 import "./js/doc"
+import "./js/outline"
 import "./js/date"
 import "./js/cover"
 import "./js/masonry"

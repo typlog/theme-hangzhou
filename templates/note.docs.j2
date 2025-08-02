@@ -59,7 +59,6 @@
     </div>
     <div {% if has_sidebar %}class="hidden xl:block"{% else %}class="hidden lg:block"{% endif %}>
       <aside id="aside" class="pl-6 pt-8 w-64 sticky top-(--navbar-height) overflow-y-auto">
-        <div class="outline-marker"></div>
         <div class="flex items-center gap-1 text-sm mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M8 6h10"/>
@@ -68,7 +67,9 @@
           </svg>
           <span class="font-medium">{{ translate('onthispage') }}</span>
         </div>
-        <div class="js-outline outline-content"></div>
+        <div class="js-outline outline-content">
+          <div class="outline-marker"></div>
+        </div>
       </aside>
     </div>
   </main>

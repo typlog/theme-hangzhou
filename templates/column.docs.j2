@@ -52,7 +52,7 @@
         <div class="mt-10 flex-1 grid grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-3 @5xl:grid-cols-4 gap-5">
           {% if pagination.items %}
             {% for note in pagination.items %}
-              <a class="block border rounded-lg overflow-hidden transition-all shadow-xs hover:border-gray-a5 hover:shadow-sm" href="{{ note.url }}">
+              <a class="block border rounded-lg overflow-hidden transition-all shadow-xs hover:border-gray-a5 hover:shadow-xs" href="{{ note.url }}">
                 {% if column.metadata.cover %}
                   <div class="flex w-full h-28">
                     {% if note.cover %}
