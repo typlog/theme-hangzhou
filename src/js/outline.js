@@ -32,39 +32,59 @@ function resolveOutline () {
   })
 }
 
+/**
+ * @param {string} id
+ */
+function setActiveOutline (id) {
+  const activeLinks = document.querySelectorAll(`li > a[href="#${id}"]`)
+  activeLinks.forEach(el => {
+    el.parentNode.parentNode.childNodes.forEach(li => {
+      li.classList.remove('active')
+    })
+    el.parentNode.classList.add('active')
+  })
+
+  const index = outline.findIndex(item => item.id === id)
+  const aside = document.querySelector('#aside')
+  if (aside) {
+    aside.setAttribute('style', `--active-index: ${index}`)
+  }
+}
+
+/**
+ * @param {string} hash
+ */
+function scrollToHashHeading (hash) {
+  const heading = document.querySelector(hash)
+  if (!heading) return
+
+  const elementPosition = heading.getBoundingClientRect().top
+  const offsetPosition = window.scrollY + elementPosition - navHeight
+  window.scrollTo({
+    top: offsetPosition,
+    behavior: 'smooth'
+  })
+}
+
+if (outline.length && location.hash) {
+  scrollToHashHeading(location.hash)
+}
+
 if (outline.length && containers.length) {
   const tocLis = outline.map(data => {
     return `<li class="level-${data.level}"><a href="#${data.id}">${data.title}</a></li>`
   }).join('')
-  const tocUl = document.createElement('ul')
-  tocUl.innerHTML = tocLis
-  for (let i = 0; i < containers.length; i++) {
-    containers[i].appendChild(tocUl)
-  }
 
-  function updateActiveOutline (id) {
-    const index = outline.findIndex(item => item.id === id)
-    containers.forEach(el => {
-      el.setAttribute('style', `--active-index: ${index}`)
-    })
-
-    const lis = tocUl.querySelectorAll('li')
-    lis.forEach(li => {
-      li.classList.remove('active')
-    })
-    const activeLi = lis[index]
-    if (activeLi) {
-      activeLi.classList.add('active')
-      if (activeLi.scrollIntoViewIfNeeded) {
-        activeLi.scrollIntoViewIfNeeded()
-      }
-    }
-  }
+  containers.forEach(el => {
+    const tocUl = document.createElement('ul')
+    tocUl.innerHTML = tocLis
+    el.appendChild(tocUl)
+  })
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        updateActiveOutline(entry.target.id)
+        setActiveOutline(entry.target.id)
       }
     })
   }, {
