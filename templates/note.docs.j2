@@ -7,12 +7,6 @@
 {% set column_config = None %}
 {%- endif -%}
 
-{%- if column_config and column_config.sidebar -%}
-{% set has_sidebar = True %}
-{%- else -%}
-{% set has_sidebar = False %}
-{%- endif -%}
-
 {% block styles %}
 {% include "./_partials/webfonts.j2" %}
 <link rel="stylesheet" href="{{ _static_url }}/base.css">
@@ -39,12 +33,8 @@
       {% include "./_layouts/components/nav-columns.j2" %}
     </div>
   </div>
-  <main id="main" class="flex mx-auto pt-28 pb-10 lg:pt-0 lg:px-8
-    {%- if has_sidebar %} max-w-content{% else %} max-w-6xl{% endif -%}
-  ">
-    {% if has_sidebar %}
-      {% include "./_layouts/doc-sidebar.j2" %}
-    {% endif %}
+  <main id="main" class="max-w-content flex mx-auto pt-28 pb-10 lg:pt-0 lg:px-8">
+    {% include "./_layouts/doc-sidebar.j2" %}
     <div id="content-container" class="grow overflow-x-hidden px-6">
       <article class="relative min-w-0 pt-8">
         <div class="mb-2 uppercase text-sm font-semibold text-accent-10">{{ column.title }}</div>
@@ -57,7 +47,7 @@
         </div>
       </article>
     </div>
-    <div {% if has_sidebar %}class="hidden xl:block"{% else %}class="hidden lg:block"{% endif %}>
+    <div class="hidden xl:block">
       <aside id="aside" class="pl-6 pt-8 w-64 sticky top-(--navbar-height) overflow-y-auto">
         <div class="flex items-center gap-1 text-sm mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

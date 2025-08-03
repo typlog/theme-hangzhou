@@ -1,8 +1,8 @@
 {% from "macros/icons.j2" import render_icon %}
 
 {% macro render_sidebar_item(item) %}
-<div class="sidebar-item{% if note and item.link == note.url %} active{% endif %}">
-  <a href="{{ item.link }}">
+<div class="sidebar-item{% if note and item.url == note.url %} active{% endif %}">
+  <a href="{{ item.url }}">
     {% if item.icon %}{{ render_icon(item.icon) }}{% endif %}
     <span class="link-text">{{ item.title }}</span>
     {% if item.badge %}
@@ -27,24 +27,30 @@
       {% endfor %}
     </div>
     <div class="pt-8 text-sm leading-6">
-      {% for item in column_config.sidebar %}
-        {% if item.children %}
-          <div class="sidebar-items">
-            <button class="sidebar-items-trigger" aria-controls="sidebar-items-{{ loop.index }}"
-              aria-expanded="{{ column_config.expanded|default('false') }}">
-              <span>{{ item.title }}</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                <path d="m6 9l6 6l6-6"></path>
-              </svg>
-            </button>
-            <div id="sidebar-items-{{ loop.index }}" class="sidebar-items-content">
-              {% for child in item.children %}{{ render_sidebar_item(child) }}{% endfor%}
+      {% if column_config and column_config.sidebar %}
+        {% for item in column_config.sidebar %}
+          {% if item.children %}
+            <div class="sidebar-items">
+              <button class="sidebar-items-trigger" aria-controls="sidebar-items-{{ loop.index }}"
+                aria-expanded="{{ column_config.expanded|default('false') }}">
+                <span>{{ item.title }}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                  <path d="m6 9l6 6l6-6"></path>
+                </svg>
+              </button>
+              <div id="sidebar-items-{{ loop.index }}" class="sidebar-items-content">
+                {% for child in item.children %}{{ render_sidebar_item(child) }}{% endfor%}
+              </div>
             </div>
-          </div>
-        {% else %}
+          {% else %}
+            {{ render_sidebar_item(item) }}
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        {% for item in query.filter_column_notes(column=column.id) %}
           {{ render_sidebar_item(item) }}
-        {% endif %}
-      {% endfor %}
+        {% endfor %}
+      {% endif %}
     </div>
   </div>
 </div>

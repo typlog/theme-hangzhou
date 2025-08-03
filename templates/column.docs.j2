@@ -2,13 +2,13 @@
 {%- if column.metadata.config -%}
 {% set column_config = query.parse_json_asset(column.metadata.config) %}
 {%- else -%}
-{% set column_config = None %}
+{% set column_config = {} %}
 {%- endif -%}
 
-{%- if column_config and column_config.sidebar -%}
-{% set has_sidebar = True %}
-{%- else -%}
-{% set has_sidebar = False %}
+{%- set column_notes = query.filter_column_notes(column=column.id) %}
+
+{%- if not column_config.sidebar -%}
+{% do column_config.setdefault('sidebar', column_notes) %}
 {%- endif -%}
 
 {% block styles %}
@@ -32,43 +32,37 @@
       {% include "./_layouts/components/nav-columns.j2" %}
     </div>
   </div>
-  <main id="main" class="flex mx-auto pt-28 pb-10 lg:pt-0 lg:px-8
-    {%- if has_sidebar %} max-w-content{% else %} max-w-6xl{% endif -%}
-  ">
-    {% if has_sidebar %}
-      {% include "./_layouts/doc-sidebar.j2" %}
-    {% endif %}
+  <main id="main" class="max-w-content flex mx-auto pt-28 pb-10 lg:pt-0 lg:px-8">
+    {% include "./_layouts/doc-sidebar.j2" %}
     <div id="content-container" class="grow overflow-x-hidden px-6 @container">
       <section class="relative min-w-0 shrink pt-8">
         <h1 class="text-4xl font-bold">{{ column.title }}</h1>
         {% if column.subtitle %}
           <h2 class="mt-2 text-lg text-gray-11">{{ column.subtitle }}</h2>
         {% endif %}
-        {% if column_config and column_config.introduction %}
+        {% if column_config.introduction %}
           <div class="e-content">
             {{ column_config.introduction|markdown }}
           </div>
         {% endif %}
         <div class="mt-10 flex-1 grid grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-3 @5xl:grid-cols-4 gap-5">
-          {% if pagination.items %}
-            {% for note in pagination.items %}
-              <a class="block border rounded-lg overflow-hidden transition-all shadow-xs hover:border-gray-a5 hover:shadow-xs" href="{{ note.url }}">
-                {% if column.metadata.cover %}
-                  <div class="flex w-full h-28">
-                    {% if note.cover %}
-                      <div class="js-cover bg-cover bg-no-repeat bg-center w-full h-full" data-src="{{ note.cover|thumbnail }}"></div>
-                    {% endif %}
-                  </div>
-                {% endif %}
-                <div class="p-4">
-                  <div class="text-sm font-medium">{{ note.title }}</div>
-                  {% if note.subtitle %}
-                    <div class="text-xs text-gray-11 mt-2">{{ note.subtitle }}</div>
+          {% for note in column_notes %}
+            <a class="block border rounded-lg overflow-hidden transition-all shadow-xs hover:border-gray-a5 hover:shadow-xs" href="{{ note.url }}">
+              {% if column.metadata.cover %}
+                <div class="flex w-full h-28">
+                  {% if note.cover %}
+                    <div class="js-cover bg-cover bg-no-repeat bg-center w-full h-full" data-src="{{ note.cover|thumbnail }}"></div>
                   {% endif %}
                 </div>
-              </a>
-            {% endfor %}
-          {% endif %}
+              {% endif %}
+              <div class="p-4">
+                <div class="text-sm font-medium">{{ note.title }}</div>
+                {% if note.subtitle %}
+                  <div class="text-xs text-gray-11 mt-2">{{ note.subtitle }}</div>
+                {% endif %}
+              </div>
+            </a>
+          {% endfor %}
         </div>
       </section>
     </div>
