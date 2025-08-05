@@ -15,6 +15,7 @@ body[data-expanded*="doc-sidebar"] {
     transform: translateX(-100%);
     overflow-y: auto;
     transition: transform 0.15s ease;
+    box-shadow: inset -1px 0 0 var(--gray-a4);
   }
   #doc-sidebar[aria-hidden="false"] {
     transform: translateX(0);

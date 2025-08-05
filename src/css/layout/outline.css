@@ -3,7 +3,7 @@
     display: none;
     position: fixed;
     top: 105px;
-    right: 2rem;
+    right: 1rem;
     padding: 1.5rem 0.5rem;
     box-shadow: var(--shadow-lg);
     background-color: var(--background-color);
@@ -11,6 +11,7 @@
     border-radius: 6px;
     z-index: 30;
     max-height: calc(100vh - var(--navbar-height));
+    max-width: calc(100vw - 2rem);
     overflow: auto;
   }
   #doc-outline[aria-hidden="false"] {

@@ -7,6 +7,7 @@
   --text-color: var(--gray-12);
   --heading-color: #000;
   --background-color: #fff;
+  --background-dropback: rgba(255, 255, 255, 0.8);
   --base-font: Inter, var(--system-sans), var(--system-cjk), sans-serif;
   --heading-font: Inter, var(--system-sans), var(--system-cjk), sans-serif;
   --content-font: Inter, var(--system-serif), var(--system-cjk), serif;
@@ -16,6 +17,7 @@
   --text-color: var(--gray-12);
   --heading-color: #fff;
   --background-color: #212328;
+  --background-dropback: rgba(33, 35, 40, 0.8);
 }
 
 .ui-root [data-section] {
