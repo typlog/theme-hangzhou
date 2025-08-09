@@ -12,8 +12,8 @@
 </div>
 {% endmacro %}
 
-<div id="doc-sidebar" class="z-20 hidden shrink-0 lg:block lg:pr-4 w-[18rem]">
-  <div class="w-full lg:sticky lg:top-(--navbar-height)">
+<div id="doc-sidebar" class="z-20 hidden shrink-0 lg:block w-[18rem]">
+  <div class="w-full sidebar-scroller">
     <div class="lg:hidden flex flex-col gap-1 border-b pb-6">
       {% for item in columns %}
         <a class="flex items-center gap-2 px-4 py-2 text-sm"
@@ -26,7 +26,7 @@
         </a>
       {% endfor %}
     </div>
-    <div class="pt-8 text-sm leading-6">
+    <div class="py-8 text-sm leading-6">
       {% if column_config and column_config.sidebar %}
         {% for item in column_config.sidebar %}
           {% if item.children %}

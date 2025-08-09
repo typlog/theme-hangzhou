@@ -33,6 +33,16 @@ body[data-expanded*="doc-sidebar"] {
   }
 }
 
+@media (width >= 64rem) {
+  .sidebar-scroller {
+    position: sticky;
+    padding-right: 1rem;
+    top: var(--navbar-height);
+    max-height: calc(100vh - var(--navbar-height));
+    overflow: hidden auto;
+  }
+}
+
 .sidebar-item + .sidebar-item {
   margin-top: 0.1rem;
 }
@@ -48,6 +58,9 @@ body[data-expanded*="doc-sidebar"] {
 }
 .sidebar-item .link-text {
   flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .sidebar-item .link-badge {
   font-size: 0.625rem;

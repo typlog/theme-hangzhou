@@ -26,3 +26,9 @@ video {
 #main {
   min-height: calc(100vh - 220px);
 }
+
+iconify-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}

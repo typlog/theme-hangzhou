@@ -15,6 +15,10 @@
 {% include "./_partials/webfonts.j2" %}
 <link rel="stylesheet" href="{{ _static_url }}/base.css">
 <link rel="stylesheet" href="{{ _static_url }}/docs.css">
+<style>:root{--navbar-height: 112px}</style>
+{% if columns|count < 2 %}
+  <style>@media (width >= 64rem){ :root {--navbar-height: 64px} }</style>
+{% endif %}
 {% endblock %}
 
 {% block scripts %}
@@ -32,9 +36,9 @@
       {% include "./_layouts/components/nav-columns.j2" %}
     </div>
   </div>
-  <main id="main" class="max-w-content flex mx-auto pt-28 pb-10 lg:pt-0 lg:px-8">
+  <main id="main" class="max-w-content flex mx-auto pt-28 lg:pt-0 lg:px-8">
     {% include "./_layouts/doc-sidebar.j2" %}
-    <div id="content-container" class="grow overflow-x-hidden px-6 @container">
+    <div id="content-container" class="grow overflow-x-hidden px-6 pb-10 @container">
       <section class="relative min-w-0 shrink pt-8">
         <h1 class="text-4xl font-bold">{{ column.title }}</h1>
         {% if column.subtitle %}
