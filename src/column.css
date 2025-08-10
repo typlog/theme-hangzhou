@@ -1,5 +1,39 @@
 @import "./css/partials/navigation.css";
 
+.column-description {
+  margin-top: 1.5rem;
+}
+
+.column-description p {
+  margin: 1rem 0;
+}
+
+.column-description a {
+  color: var(--accent-9);
+  text-decoration: underline;
+}
+
+.column-description a:hover {
+  color: var(--accent-11);
+}
+
+.column-links iconify-icon {
+  color: var(--gray-10);
+  font-size: 0.96em;
+}
+
+.column-links a {
+  transition: color 0.2s ease;
+}
+
+.column-links a:hover {
+  color: var(--accent-10);
+}
+
+.column-links a:hover iconify-icon {
+  color: var(--accent-10);
+}
+
 .note-item a:hover {
   color: var(--accent-10);
 }
