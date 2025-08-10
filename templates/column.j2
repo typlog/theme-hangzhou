@@ -17,49 +17,36 @@
       {% include "./_layouts/components/nav-head.j2" %}
     </div>
   </div>
-  <main id="main" class="flex max-w-6xl mx-auto pt-28 lg:pt-14 pb-10 lg:px-8">
-    <div id="content-container" class="grow px-6 @container">
-      <section class="relative min-w-0 shrink pt-8">
+  <main id="main" class="max-w-content flex mx-auto pt-28 lg:pt-14 pb-16 lg:px-8">
+    <div class="grow px-6 flex flex-col lg:flex-row gap-4">
+      <section class="relative min-w-80 pb-12 mb-6 border-b lg:border-none shrink">
         <h1 class="text-4xl font-bold">{{ column.title }}</h1>
         {% if column.subtitle %}
           <h2 class="mt-2 text-lg text-gray-11">{{ column.subtitle }}</h2>
         {% endif %}
+        <div class="flex lg:flex-col gap-2">
+        </div>
       </section>
-      <div class="post-cards mt-10 js-masonry">
+      <div class="flex flex-col gap-8">
         {% if pagination.items %}
           {% for note in pagination.items %}
-            {%- set grid_area = 7 -%}
-            {%- if note.subtitle -%}
-            {%- set grid_area = grid_area + 1 %}
-            {%- endif -%}
-            {%- if note.cover -%}
-            {%- set grid_area = grid_area + 9 %}
-            {%- endif -%}
-            <a class="post-card" href="{{ note.url }}" style="grid-row-end: span {{ grid_area }}">
-              {% if note.cover %}
-                <div class="post-card-image">
-                  <div class="js-cover" data-src="{{ note.cover|thumbnail }}"></div>
-                </div>
-              {% endif %}
-              <div class="py-5 px-6">
-                {% if note.tags %}
-                  <div class="flex mb-3 gap-1.5 text-xs">
-                    {% for tag in note.tags %}
-                    <span class="py-0.5 px-1.5 bg-gray-a3 text-gray-a11 rounded font-medium">{{ tag.title }}</span>
-                    {% endfor %}
-                  </div>
-                {% endif %}
-                <div class="font-medium">{{ note.title }}</div>
+            <div class="note-item">
+              <div class="flex items-center gap-2">
+                <time class="text-xs text-gray-10 font-medium mr-2 js-time" datetime="{{ note.published_at|xmldatetime }}">{{ note.published_at|dateformat('%b %d, %Y') }}</time>
+                {% for tag in note.tags %}
+                  <a class="py-0.5 px-1.5 bg-gray-a3 text-gray-a11 text-xs rounded font-medium" href="{{ tag.url }}">{{ tag.title }}</a>
+                {% endfor %}
+              </div>
+              <a class="block mt-1" href="{{ note.url }}">
+                <div class="font-medium text-2xl">{{ note.title }}</div>
                 {% if note.subtitle %}
-                  <div class="text-sm text-gray-11 mt-2">{{ note.subtitle }}</div>
+                  <div class="text-lg text-gray-11 mt-1.5">{{ note.subtitle }}</div>
                 {% endif %}
-              </div>
-              <div class="mt-4 px-6 pb-6 text-xs text-gray-10">
-                <time class="js-time" datetime="{{ note.published_at|xmldatetime }}">{{ note.published_at|dateformat('%b %d, %Y') }}</time>
-              </div>
-            </a>
+              </a>
+            </div>
           {% endfor %}
         {% endif %}
+        {% include "./_partials/navigation.j2" %}
       </div>
     </div>
   </main>

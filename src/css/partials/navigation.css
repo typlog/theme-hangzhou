@@ -1,7 +1,7 @@
 .navigation {
   display: flex;
   gap: 2rem;
-  margin-top: 0.5rem;
+  margin-top: 2rem;
 }
 
 .navigation > div {

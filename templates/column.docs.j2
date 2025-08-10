@@ -49,24 +49,18 @@
             {{ column_config.introduction|markdown }}
           </div>
         {% endif %}
-        <div class="mt-10 flex-1 grid grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-3 @5xl:grid-cols-4 gap-5">
-          {% for note in column_notes %}
-            <a class="block border rounded-lg overflow-hidden transition-all shadow-xs hover:border-gray-a5 hover:shadow-xs" href="{{ note.url }}">
-              {% if column.metadata.cover %}
-                <div class="flex w-full h-28">
-                  {% if note.cover %}
-                    <div class="js-cover bg-cover bg-no-repeat bg-center w-full h-full" data-src="{{ note.cover|thumbnail }}"></div>
-                  {% endif %}
-                </div>
-              {% endif %}
-              <div class="p-4">
-                <div class="text-sm font-medium">{{ note.title }}</div>
+        <div class="flex flex-col gap-8 pt-8 border-t">
+          {% if pagination.items %}
+            {% for note in pagination.items %}
+              <a class="hover:opacity-80" href="{{ note.url }}">
+                <div class="font-medium text-lg">{{ note.title }}</div>
                 {% if note.subtitle %}
-                  <div class="text-xs text-gray-11 mt-2">{{ note.subtitle }}</div>
+                  <div class="text-gray-11 mt-1.5">{{ note.subtitle }}</div>
                 {% endif %}
-              </div>
-            </a>
-          {% endfor %}
+              </a>
+            {% endfor %}
+          {% endif %}
+          {% include "./_partials/navigation.j2" %}
         </div>
       </section>
     </div>
