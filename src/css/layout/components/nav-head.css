@@ -52,14 +52,15 @@ body[data-expanded*="mobile-navbar"] {
   position: absolute;
   top: 64px;
   left: 0;
-  padding: 1rem;
   background-color: var(--background-color);
   height: calc(100vh - 64px);
   width: 100%;
   z-index: 30;
+  overflow: hidden;
 }
 
 .mobile-nav-head[aria-hidden="true"] {
+  display: none;
   height: 0;
   visibility: hidden;
 }
