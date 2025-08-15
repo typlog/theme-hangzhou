@@ -20,6 +20,7 @@
     },
     {
       "name": "nav_links",
+      "friendlyName": "Navbar links",
       "type": "NavLink",
       "multiple": true,
       "options": {
@@ -28,6 +29,7 @@
     },
     {
       "name": "nav_actions",
+      "friendlyName": "Navbar actions",
       "type": "NavLink",
       "multiple": true,
       "options": {
@@ -36,8 +38,36 @@
     },
     {
       "name": "podcast_links",
+      "friendlyName": "Podcast links",
       "type": "IconLink",
-      "multiple": true
+      "multiple": true,
+      "inside": [
+        {
+          "name": "apple_podcast_url",
+          "friendlyName": "Apple Podcast",
+          "type": "url"
+        },
+        {
+          "name": "spotify_url",
+          "friendlyName": "Spotify",
+          "type": "url"
+        },
+        {
+          "name": "castro_url",
+          "friendlyName": "Castro",
+          "type": "url"
+        },
+        {
+          "name": "pocket_cast_url",
+          "friendlyName": "Pocket Cast",
+          "type": "url"
+        },
+        {
+          "name": "xyz_url",
+          "friendlyName": "小宇宙",
+          "type": "url"
+        }
+      ]
     },
     {
       "name": "foot_links",
@@ -46,8 +76,41 @@
     },
     {
       "name": "foot_socials",
+      "friendlyName": "Social links",
       "type": "IconLink",
-      "multiple": true
+      "multiple": true,
+      "inside": [
+        {
+          "name": "x_url",
+          "friendlyName": "x.com",
+          "type": "url"
+        },
+        {
+          "name": "github_url",
+          "friendlyName": "GitHub",
+          "type": "url"
+        },
+        {
+          "name": "linkedin_url",
+          "friendlyName": "LinkedIn",
+          "type": "url"
+        },
+        {
+          "name": "discord_url",
+          "friendlyName": "Discord",
+          "type": "url"
+        },
+        {
+          "name": "youtube_url",
+          "friendlyName": "YouTube",
+          "type": "url"
+        },
+        {
+          "name": "reddit_url",
+          "friendlyName": "Reddit",
+          "type": "url"
+        }
+      ]
     }
   ],
   "messages": {
