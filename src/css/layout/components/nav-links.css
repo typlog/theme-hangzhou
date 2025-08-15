@@ -19,11 +19,11 @@ ul.nav-links {
   gap: 0.25rem;
   padding: 0;
   font-size: .95rem;
-  font-weight: 400;
+  font-weight: 500;
   white-space: nowrap;
   border: none;
   background-color: transparent;
-  color: var(--gray-a11);
+  color: var(--gray-11);
 }
 
 .mobile-nav-link > button > svg,
@@ -43,10 +43,10 @@ ul.nav-links {
   align-items: center;
   gap: 0.25rem;
   font-size: .95rem;
-  font-weight: 400;
+  font-weight: 500;
   white-space: nowrap;
   text-decoration: none;
-  color: var(--gray-a11);
+  color: var(--gray-11);
 }
 
 .nav-link > button:hover,

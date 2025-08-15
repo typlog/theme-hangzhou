@@ -61,36 +61,7 @@
       <div class="flex flex-col grow gap-8">
         {% if pagination.items %}
           {% for note in pagination.items %}
-            {% set episode = note.audio %}
-            <div class="note-item pb-6 border-b">
-              <div class="flex items-center gap-2">
-                {% if episode.audio and episode.audio.duration %}
-                  <span class="py-0.5 px-1.5 bg-gray-a3 text-gray-a11 text-xs rounded font-medium">
-                    {{ episode.audio.duration|durationformat }}
-                  </span>
-                {% endif %}
-                {% if episode.season or episode.episode %}
-                  <span class="py-0.5 px-1.5 bg-gray-a3 text-gray-a11 text-xs rounded font-medium">
-                    {%- if episode.season %}S{{episode.season}}{% endif -%}
-                    {%- if episode.episode %}E{{episode.episode}}{% endif -%}
-                  </span>
-                {% endif %}
-                <time class="text-xs text-gray-10 font-medium mr-2 js-time" datetime="{{ note.published_at|xmldatetime }}">{{ note.published_at|dateformat('%b %d, %Y') }}</time>
-              </div>
-              <div class="flex gap-4 mt-4">
-                {% if episode.image %}
-                  <a href="{{ note.url }}">
-                    <img class="rounded" src="{{ episode.image|thumbnail('ss') }}" width="100" height="100" alt="{{ note.title }}">
-                  </a>
-                {% endif %}
-                <a href="{{ note.url }}">
-                  <div class="font-medium text-2xl">{{ note.title }}</div>
-                  {% if note.subtitle %}
-                    <div class="text-lg text-gray-11 mt-1.5">{{ note.subtitle }}</div>
-                  {% endif %}
-                </a>
-              </div>
-            </div>
+            {% include "./_partials/audio-item.j2" %}
           {% endfor %}
         {% endif %}
         {% include "./_partials/navigation.j2" %}
