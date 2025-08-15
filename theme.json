@@ -7,16 +7,21 @@
   "description": "A theme for documentation.",
   "config": [
     {
-      "name": "color_mode",
-      "type": "enum",
-      "default": "auto",
-      "options": {
-        "choices": ["auto", "light", "dark"]
-      }
-    },
-    {
-      "name": "copyright",
-      "type": "string"
+      "friendlyName": "General",
+      "fields": [
+        {
+          "name": "color_mode",
+          "type": "enum",
+          "default": "auto",
+          "options": {
+            "choices": ["auto", "light", "dark"]
+          }
+        },
+        {
+          "name": "copyright",
+          "type": "string"
+        }
+      ]
     },
     {
       "name": "nav_links",
@@ -37,49 +42,14 @@
       }
     },
     {
-      "name": "podcast_links",
-      "friendlyName": "Podcast links",
-      "type": "IconLink",
-      "multiple": true,
-      "inside": [
-        {
-          "name": "apple_podcast_url",
-          "friendlyName": "Apple Podcast",
-          "type": "url"
-        },
-        {
-          "name": "spotify_url",
-          "friendlyName": "Spotify",
-          "type": "url"
-        },
-        {
-          "name": "castro_url",
-          "friendlyName": "Castro",
-          "type": "url"
-        },
-        {
-          "name": "pocket_cast_url",
-          "friendlyName": "Pocket Cast",
-          "type": "url"
-        },
-        {
-          "name": "xyz_url",
-          "friendlyName": "小宇宙",
-          "type": "url"
-        }
-      ]
-    },
-    {
       "name": "foot_links",
       "type": "SectionLinks",
       "multiple": true
     },
     {
-      "name": "foot_socials",
       "friendlyName": "Social links",
-      "type": "IconLink",
       "multiple": true,
-      "inside": [
+      "fields": [
         {
           "name": "x_url",
           "friendlyName": "x.com",
@@ -109,6 +79,12 @@
           "name": "reddit_url",
           "friendlyName": "Reddit",
           "type": "url"
+        },
+        {
+          "name": "foot_socials",
+          "friendlyName": "Other links",
+          "type": "IconLink",
+          "multiple": true
         }
       ]
     }

@@ -60,18 +60,6 @@
       "link": "https://bsky.app/profile/typlog.com"
     }
   ],
-  "theme_podcast_links": [
-    {
-      "icon": "simple-icons:applepodcasts",
-      "title": "Apple Podcasts",
-      "link": "https://podcasts.apple.com/us/podcast/typlog/id1564550000"
-    },
-    {
-      "icon": "simple-icons:spotify",
-      "title": "Spotify",
-      "link": "https://open.spotify.com/show/5Z6Z9Z6Z6Z6Z6Z6Z6Z6Z6Z"
-    }
-  ],
   "theme_foot_links": [
     {
       "caption": "Resources",
