@@ -59,13 +59,11 @@
           </div>
         {% endif %}
       </section>
-      <div class="flex flex-col gap-8">
+      <div class="flex flex-col grow gap-8">
         {% if pagination.items %}
           {% for note in pagination.items %}
             {% if note.type == 'audio' and note.audio %}
               {% include "./_partials/audio-item.j2" %}
-            {% elif note.type == 'review' and note.review %}
-            {% elif note.type == 'photos' %}
             {% else %}
               {% include "./_partials/post-item.j2" %}
             {% endif %}

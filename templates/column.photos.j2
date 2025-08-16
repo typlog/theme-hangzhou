@@ -1,0 +1,49 @@
+{% block styles %}
+{% include "./_partials/webfonts.j2" %}
+<link rel="stylesheet" href="{{ _static_url }}/base.css">
+<link rel="stylesheet" href="{{ _static_url }}/column.css">
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ _static_url }}/app.js" type="module"></script>
+{% include "components/iconify-icon.j2" %}
+{% include "components/lightbox.j2" %}
+{% endblock %}
+
+
+{% block body %}
+  <div id="navbar" class="z-30 fixed lg:sticky top-0 w-full">
+    <div id="navbar-backdrop"></div>
+    <div class="mx-auto max-w-content relative">
+      {% include "./_layouts/components/nav-head.j2" %}
+    </div>
+  </div>
+  <main id="main" class="max-w-content mx-auto pt-28 lg:pt-14 pb-16 lg:px-8">
+    <section class="relative pb-12 mb-6 border-b">
+      <h1 class="text-4xl font-bold">{{ column.title }}</h1>
+      {% if column.subtitle %}
+        <h2 class="mt-2 text-lg text-gray-11">{{ column.subtitle }}</h2>
+      {% endif %}
+    </section>
+    <div class="flex flex-col gap-8 js-lightbox">
+      {% if pagination.items %}
+        {% for note in pagination.items %}
+          <article class="note-item pb-6 border-b">
+            <time class="text-xs text-gray-10 font-medium mr-2 js-time" datetime="{{ note.published_at|xmldatetime }}">{{ note.published_at|dateformat('%b %d, %Y') }}</time>
+            <a class="block mt-1" href="{{ note.url }}">
+              <h2 class="font-medium text-2xl">{{ note.title }}</h2>
+              {% if note.subtitle %}
+                <div class="text-lg text-gray-11 mt-1.5">{{ note.subtitle }}</div>
+              {% endif %}
+            </a>
+            <div class="mt-6">
+              {{ note.content }}
+            </div>
+          </article>
+        {% endfor %}
+      {% endif %}
+      {% include "./_partials/navigation.j2" %}
+    </div>
+  </main>
+  {% include "./_layouts/footer.j2" %}
+{% endblock %}

@@ -106,11 +106,13 @@
           {% include "components/audio-player.j2" %}
           {{ note.content }}
         </div>
-        <div class="entry-tags">
-          {% for tag in note.tags %}
-            <a class="p-category" href="{{ tag.url }}">{{ tag.title }}</a>
-          {% endfor %}
-        </div>
+        {% if note.tags %}
+          <div class="entry-tags flex items-center gap-4">
+            {% for tag in note.tags %}
+              <a class="p-category" href="{{ tag.url }}">{{ tag.title }}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
       </article>
     </div>
   </main>

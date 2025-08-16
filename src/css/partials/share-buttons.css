@@ -9,6 +9,7 @@
   background: var(--gray-a3);
   text-decoration: none;
   transition: all 0.2s ease;
+  border-radius: 4px;
 }
 
 .share-buttons a:hover {

@@ -36,17 +36,13 @@
         <div class="e-content font-serif lg:text-lg">
           {{ note.content }}
         </div>
-        <div class="flex justify-between">
-          <div class="entry-tags">
+        {% if note.tags %}
+          <div class="entry-tags flex items-center gap-4">
             {% for tag in note.tags %}
               <a class="p-category" href="{{ tag.url }}">{{ tag.title }}</a>
             {% endfor %}
           </div>
-          <div class="text-xs text-gray-10 flex items-center">
-            <span>{{ translate('last_updated') }}</span>
-            <time class="js-time" datetime="{{ note.updated_at|xmldatetime }}">{{ note.updated_at|dateformat('%b %d, %Y') }}</time>
-          </div>
-        </div>
+        {% endif %}
       </article>
     </div>
     {% if has_toc %}

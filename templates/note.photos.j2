@@ -1,0 +1,42 @@
+{% block styles %}
+{% include "./_partials/webfonts.j2" %}
+<link rel="stylesheet" href="{{ _static_url }}/base.css">
+<link rel="stylesheet" href="{{ _static_url }}/entry.css">
+{% include "components/clipboard-copy.j2" %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ _static_url }}/app.js" type="module"></script>
+{% include "components/iconify-icon.j2" %}
+{% include "components/lightbox.j2" %}
+{% endblock %}
+
+{% block body %}
+  <div id="navbar" class="z-30 fixed lg:sticky top-0 w-full">
+    <div id="navbar-backdrop"></div>
+    <div class="mx-auto max-w-content relative">
+      {% include "./_layouts/components/nav-head.j2" %}
+    </div>
+  </div>
+  <main id="main" class="max-w-content mx-auto pt-28 lg:pt-14 pb-16 lg:px-8">
+    <article class="h-entry">
+      <div class="flex items-center gap-2 mb-2">
+        <a class="uppercase text-sm font-semibold text-accent-10" href="{{ column.url }}">{{ column.title }}</a>
+        <span class="text-xs text-gray-4">/</span>
+        <time class="text-xs text-gray-10 font-medium js-time" datetime="{{ note.published_at|xmldatetime }}">{{ note.published_at|dateformat('%b %d, %Y') }}</time>
+      </div>
+      <h1 class="p-name text-2xl lg:text-4xl font-bold">{{ note.title }}</h1>
+      {% if note.subtitle %}
+        <h2 class="p-summary mt-2 text-lg text-gray-11">{{ note.subtitle }}</h2>
+      {% endif %}
+      <div class="e-content">
+        {{ note.content }}
+      </div>
+      <div class="flex items-center justify-between">
+        {% include "./_partials/enjoy-button.j2" %}
+        {% include "./_partials/share-buttons.j2" %}
+      </div>
+    </article>
+  </main>
+  {% include "./_layouts/footer.j2" %}
+{% endblock %}
