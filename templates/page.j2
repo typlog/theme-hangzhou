@@ -1,17 +1,35 @@
 {% block styles %}
-<link rel="preconnect" href="https://use.typkit.net">
-<link rel="stylesheet" href="https://use.typekit.net/zbe5yhf.css">
-<link rel="stylesheet" href="{{ _static_url }}/page.css">
+{% include "./_partials/webfonts.j2" %}
+<link rel="stylesheet" href="{{ _static_url }}/base.css">
+<link rel="stylesheet" href="{{ _static_url }}/entry.css">
 {% endblock %}
 
 {% block scripts %}
 <script src="{{ _static_url }}/app.js" type="module"></script>
 {% include "components/iconify-icon.j2" %}
+{% include "components/lightbox.j2" %}
 {% endblock %}
 
 {% block body %}
-  <div class="ui-root" data-page-container data-radius="medium" data-scaling="100%" data-has-background="true">
-    {{ body }}
+  <div id="navbar" class="z-30 fixed lg:sticky top-0 w-full">
+    <div id="navbar-backdrop"></div>
+    <div class="mx-auto max-w-content relative">
+      {% include "./_layouts/components/nav-head.j2" %}
+    </div>
   </div>
+  {% if page.type == "markdown" %}
+    <main id="main" class="flex mx-auto pt-20 lg:pt-6 pb-10 lg:px-8 max-w-4xl">
+      <div id="content-container" class="grow px-6">
+        <article class="relative min-w-0 shrink pt-8 max-w-[48rem] mx-auto">
+          <h1 class="p-name text-2xl lg:text-4xl font-bold">{{ page.title }}</h1>
+          <div class="e-content font-serif lg:text-lg">
+            {{ page.content }}
+          </div>
+        </article>
+      </div>
+    </main>
+  {% else %}
+    {{ page.content }}
+  {% endif %}
   {% include "./_layouts/footer.j2" %}
 {% endblock %}

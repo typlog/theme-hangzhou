@@ -20,8 +20,8 @@
   <main id="main" class="max-w-content flex mx-auto pt-28 lg:pt-14 pb-16 lg:px-8">
     <div class="grow px-6 flex flex-col lg:flex-row gap-8">
       <section class="relative pb-12 mb-6 border-b lg:w-80 lg:pr-10 lg:border-none shrink">
-        <div class="flex lg:flex-col gap-6">
-          {% if podcast %}
+        {% if podcast %}
+          <div class="flex lg:flex-col gap-6">
             {% if podcast.image %}
               <img src="{{ podcast.image|thumbnail('ss') }}" width="120" height="120" alt="{{ podcast.title }}">
             {% endif %}
@@ -64,12 +64,6 @@
             <li><a href="{{ podcast.castro_url }}">
               <iconify-icon icon="simple-icons:castro"></iconify-icon>
               <span>Castro</span>
-            </a></li>
-          {% endif %}
-          {% if podcast.overcast_url %}
-            <li><a href="{{ podcast.overcast_url }}">
-              <iconify-icon icon="simple-icons:overcast"></iconify-icon>
-              <span>Overcast</span>
             </a></li>
           {% endif %}
           {% if podcast.pocketcasts_url %}

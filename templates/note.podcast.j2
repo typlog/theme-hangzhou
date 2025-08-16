@@ -1,0 +1,118 @@
+{% block styles %}
+{% include "./_partials/webfonts.j2" %}
+<link rel="stylesheet" href="{{ _static_url }}/base.css">
+<link rel="stylesheet" href="{{ _static_url }}/entry.css">
+{% include "components/clipboard-copy.j2" %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ _static_url }}/app.js" type="module"></script>
+{% include "components/iconify-icon.j2" %}
+{% include "components/lightbox.j2" %}
+{% endblock %}
+
+{% macro render_authors(authors, show_name=True) %}
+  {%- if show_name -%}
+    {% set size = 24 %}
+  {%- else -%}
+    {% set size = 48 %}
+  {%- endif -%}
+  <div class="flex flex-col gap-2">
+    {% for author in authors %}
+      <a class="flex items-center gap-1" href="{{ author.url }}">
+        {% if author.avatar %}
+          <img class="rounded-full" src="{{ author.avatar|thumbnail('ss') }}" width="{{ size }}" height="{{ size }}" alt="{{ author.name }}">
+          {% if show_name %}
+            <span>{{ author.name }}</span>
+          {% endif %}
+        {% endif %}
+      </a>
+    {% endfor %}
+  </div>
+{% endmacro %}
+
+{% block body %}
+  <div id="navbar" class="z-30 fixed lg:sticky top-0 w-full">
+    <div id="navbar-backdrop"></div>
+    <div class="mx-auto max-w-content relative">
+      {% include "./_layouts/components/nav-head.j2" %}
+    </div>
+  </div>
+  <main id="main" class="flex flex-col lg:flex-row mx-auto pt-20 lg:pt-6 pb-10 lg:px-8 max-w-6xl">
+    <aside class="hidden lg:block py-8 px-6 w-80">
+      {% if podcast %}
+        <div class="flex flex-col gap-6 mb-4">
+          {% if podcast.image %}
+            <div>
+              <a class="inline-flex items-center" href="{{ column.url }}">
+                <img src="{{ podcast.image|thumbnail('ss') }}" width="120" height="120" alt="{{ podcast.title }}">
+              </a>
+            </div>
+          {% endif %}
+          <div class="flex-grow">
+            <h1 class="text-4xl font-bold">{{ podcast.title }}</h1>
+            {% if podcast.subtitle %}
+              <h2 class="mt-2 text-lg text-gray-11">{{ podcast.subtitle }}</h2>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+      <div class="flex flex-col gap-6">
+        {% if note.authors %}
+          <div>
+            <div class="mb-2">
+              <span class="font-bold text-sm py-1 px-2 bg-accent-a3 text-accent-a11 rounded">{{ translate('hosts') }}</span>
+            </div>
+            {{ render_authors(note.authors) }}
+          </div>
+        {% endif %}
+        {% if note.guests %}
+          <div>
+            <div class="mb-2">
+              <span class="font-bold text-sm py-1 px-2 bg-accent-a3 text-accent-a11 rounded">{{ translate('guests') }}</span>
+            </div>
+            {{ render_authors(note.guests) }}
+          </div>
+        {% endif %}
+      </div>
+    </aside>
+    <div id="content-container" class="grow px-6">
+      <article class="h-entry relative min-w-0 shrink pt-8 max-w-[48rem] mx-auto">
+        <div class="flex items-center gap-2 mb-2">
+          {% if note.audio %}
+            {% set episode = note.audio %}
+            {% include "./_partials/episode-meta.j2" %}
+          {% endif %}
+        </div>
+        <h1 class="p-name text-2xl lg:text-4xl font-bold">{{ note.title }}</h1>
+        {% if note.subtitle %}
+          <h2 class="p-summary mt-2 text-lg text-gray-11">{{ note.subtitle }}</h2>
+        {% endif %}
+        {% if note.authors %}
+          <div class="lg:hidden my-6">
+            <span class="font-medium">{{ translate('hosts') }}</span>
+            <div class="border-b-4 border-gray-4 w-20 mb-4"></div>
+            {{ render_authors(note.authors, False) }}
+          </div>
+        {% endif %}
+        {% if note.guests %}
+          <div class="lg:hidden my-6">
+            <span class="font-medium">{{ translate('guests') }}</span>
+            <div class="border-b-4 border-gray-4 w-20 mb-4"></div>
+            {{ render_authors(note.guests, False) }}
+          </div>
+        {% endif %}
+        <div class="e-content font-serif lg:text-lg">
+          {% include "components/audio-player.j2" %}
+          {{ note.content }}
+        </div>
+        <div class="entry-tags">
+          {% for tag in note.tags %}
+            <a class="p-category" href="{{ tag.url }}">{{ tag.title }}</a>
+          {% endfor %}
+        </div>
+      </article>
+    </div>
+  </main>
+  {% include "./_layouts/footer.j2" %}
+{% endblock %}

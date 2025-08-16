@@ -1,7 +1,7 @@
-{% from "macros/links.j2" import render_section_links, render_icon_links %}
+{% from "macros/links.j2" import render_section_links %}
 
 <div id="footer" class="bg-gray-2 border-t pt-10">
-  <div class="px-4 md:px-8 xl:px-16 relative pb-4">
+  <div class="px-4 md:px-8 xl:px-16 relative z-10 pb-4">
     <div class="flex flex-col md:flex-row md:justify-between gap-16">
       <div class="footer-logo shrink-0 flex items-center gap-4 md:flex-col md:items-start">
         {% if site.glyph_logo_light %}
@@ -37,11 +37,9 @@
         &copy; {{ site.name }}
         {% endif %}
       </div>
-      {% if theme_foot_socials %}
-        <div class="footer-socials">
-          {{ render_icon_links(theme_foot_socials) }}
-        </div>
-      {% endif %}
+      <div class="footer-socials">
+        {% include "./components/social-icons.j2" %}
+      </div>
     </div>
   </div>
   <div class="px-4 md:px-8 xl:px-16 text-xs text-gray-8 font-medium">

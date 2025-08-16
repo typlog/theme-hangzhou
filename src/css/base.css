@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "./tailwind.css";
 @import "./variables.css";
+@import "./components/theme-switch.css";
+@import "./components/hamburger.css";
+@import "./components/aria-tip.css";
+@import "./components/masks.css";
 @import "./layout/navbar.css";
 @import "./layout/footer.css";
 

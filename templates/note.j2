@@ -3,7 +3,7 @@
 {% block styles %}
 {% include "./_partials/webfonts.j2" %}
 <link rel="stylesheet" href="{{ _static_url }}/base.css">
-<link rel="stylesheet" href="{{ _static_url }}/post.css">
+<link rel="stylesheet" href="{{ _static_url }}/entry.css">
 {% include "components/clipboard-copy.j2" %}
 {% endblock %}
 
@@ -23,14 +23,29 @@
   <main id="main" class="flex mx-auto pt-20 lg:pt-6 pb-10 lg:px-8
     {%- if has_toc %} max-w-6xl{% else %} max-w-4xl{% endif %}">
     <div id="content-container" class="grow px-6">
-      <article class="relative min-w-0 shrink pt-8 max-w-[48rem] mx-auto">
-        <div class="mb-2 uppercase text-sm font-semibold text-accent-10">{{ column.title }}</div>
+      <article class="h-entry relative min-w-0 shrink pt-8 max-w-[48rem] mx-auto">
+        <div class="flex items-center gap-2 mb-2">
+          <a class="uppercase text-sm font-semibold text-accent-10" href="{{ column.url }}">{{ column.title }}</a>
+          <span class="text-xs text-gray-4">/</span>
+          <time class="text-xs text-gray-10 font-medium js-time" datetime="{{ note.published_at|xmldatetime }}">{{ note.published_at|dateformat('%b %d, %Y') }}</time>
+        </div>
         <h1 class="p-name text-2xl lg:text-4xl font-bold">{{ note.title }}</h1>
         {% if note.subtitle %}
           <h2 class="p-summary mt-2 text-lg text-gray-11">{{ note.subtitle }}</h2>
         {% endif %}
         <div class="e-content font-serif lg:text-lg">
           {{ note.content }}
+        </div>
+        <div class="flex justify-between">
+          <div class="entry-tags">
+            {% for tag in note.tags %}
+              <a class="p-category" href="{{ tag.url }}">{{ tag.title }}</a>
+            {% endfor %}
+          </div>
+          <div class="text-xs text-gray-10 flex items-center">
+            <span>{{ translate('last_updated') }}</span>
+            <time class="js-time" datetime="{{ note.updated_at|xmldatetime }}">{{ note.updated_at|dateformat('%b %d, %Y') }}</time>
+          </div>
         </div>
       </article>
     </div>

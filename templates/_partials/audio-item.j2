@@ -1,17 +1,7 @@
 {% set episode = note.audio %}
 <div class="note-item pb-6 border-b">
   <div class="flex items-center gap-2">
-    {% if episode.audio and episode.audio.duration %}
-      <span class="py-0.5 px-1.5 bg-gray-a3 text-gray-a11 text-xs rounded font-medium">
-        {{ episode.audio.duration|durationformat }}
-      </span>
-    {% endif %}
-    {% if episode.season or episode.episode %}
-      <span class="py-0.5 px-1.5 bg-gray-a3 text-gray-a11 text-xs rounded font-medium">
-        {%- if episode.season %}S{{episode.season}}{% endif -%}
-        {%- if episode.episode %}E{{episode.episode}}{% endif -%}
-      </span>
-    {% endif %}
+    {% include "./episode-meta.j2" %}
     <time class="text-xs text-gray-10 font-medium mr-2 js-time" datetime="{{ note.published_at|xmldatetime }}">{{ note.published_at|dateformat('%b %d, %Y') }}</time>
   </div>
   <div class="flex gap-4 mt-4">

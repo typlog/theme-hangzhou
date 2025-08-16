@@ -2,7 +2,7 @@
 {%- set columns = query.filter_columns(type=column.type, lang=column.lang) -%}
 
 {%- if column.metadata.config -%}
-{% set column_config = query.parse_json_asset(column.metadata.config) %}
+{% set column_config = query.parse_asset_data(column.metadata.config) %}
 {%- else -%}
 {% set column_config = None %}
 {%- endif -%}
@@ -44,6 +44,17 @@
         {% endif %}
         <div class="e-content font-serif lg:text-lg">
           {{ note.content }}
+        </div>
+        <div class="flex justify-between">
+          <div class="entry-tags">
+            {% for tag in note.tags %}
+              <a class="p-category" href="{{ tag.url }}">{{ tag.title }}</a>
+            {% endfor %}
+          </div>
+          <div class="text-xs text-gray-10 flex items-center">
+            <span>{{ translate('last_updated') }}</span>
+            <time class="js-time" datetime="{{ note.updated_at|xmldatetime }}">{{ note.updated_at|dateformat('%b %d, %Y') }}</time>
+          </div>
         </div>
       </article>
     </div>

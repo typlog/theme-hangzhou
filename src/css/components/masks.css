@@ -1,0 +1,31 @@
+.with-patterns {
+  position: relative;
+}
+
+.with-patterns::before {
+  content: "";
+  position: absolute;
+  inset: 0px;
+  box-shadow: var(--gray-1) 0px 150px 200px inset, var(--gray-1) 0px -200px 200px inset;
+  z-index: 2;
+}
+
+.with-patterns::after {
+  content: "";
+  background-color: var(--gray-3);
+
+  mask-repeat: repeat;
+  position: absolute;
+  inset: 0px;
+  z-index: 1;
+}
+
+.with-patterns[data-patterns="topo"]::after {
+  mask-image: var(--i-patterns-topo);
+  mask-size: 600px 600px;
+}
+
+.with-patterns[data-patterns="waves"]::after {
+  mask-image: var(--i-patterns-waves);
+  mask-size: 64px 32px;
+}

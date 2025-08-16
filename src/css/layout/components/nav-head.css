@@ -37,8 +37,8 @@ body[data-expanded*="mobile-navbar"] {
   height: 34px;
   background-color: var(--accent-10);
   color: var(--accent-contrast);
-  border-radius: 48px;
-  padding: 0.25rem 1rem;
+  border-radius: 6px;
+  padding: 0.25rem 0.8rem;
   font-size: 0.875rem;
   font-weight: 500;
   border: 2px solid var(--accent-10);
@@ -48,12 +48,18 @@ body[data-expanded*="mobile-navbar"] {
   opacity: 0.85;
 }
 
+button[aria-controls="mobile-navbar"] {
+  position: relative;
+  z-index: 31;
+}
+
 .mobile-nav-head {
   position: absolute;
-  top: 64px;
+  top: 0;
   left: 0;
   background-color: var(--background-color);
-  height: calc(100vh - 64px);
+  padding-top: 64px;
+  height: 100vh;
   width: 100%;
   z-index: 30;
   overflow: hidden;
@@ -63,6 +69,10 @@ body[data-expanded*="mobile-navbar"] {
   display: none;
   height: 0;
   visibility: hidden;
+}
+
+.nav-head-actions .nav-links {
+  gap: 0.5rem;
 }
 
 .mobile-nav-head .nav-links {

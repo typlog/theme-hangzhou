@@ -1,5 +1,5 @@
 /** @type {NodeListOf<HTMLTimeElement>} */
-const elements = document.querySelectorAll('time.dt-published')
+const elements = document.querySelectorAll('time.js-time')
 const lang = document.documentElement.lang
 
 /** @param {HTMLTimeElement} element */

@@ -1,0 +1,11 @@
+{% if episode.audio and episode.audio.duration %}
+  <span class="py-0.5 px-1.5 bg-gray-a3 text-gray-a11 text-xs rounded font-medium">
+    {{ episode.audio.duration|durationformat }}
+  </span>
+{% endif %}
+{% if episode.season or episode.episode %}
+  <span class="py-0.5 px-1.5 bg-gray-a3 text-gray-a11 text-xs rounded font-medium">
+    {%- if episode.season %}S{{episode.season}}{% endif -%}
+    {%- if episode.episode %}E{{episode.episode}}{% endif -%}
+  </span>
+{% endif %}

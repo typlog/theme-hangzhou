@@ -1,7 +1,6 @@
 .e-content {
   line-height: 1.62;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
+  margin: 2rem 0;
   --font-serif: "Source Serif 4", var(--system-serif), serif;
   --scroll-margin-top: calc(var(--navbar-height) + 28px);
 }

@@ -1,6 +1,6 @@
 {% set columns = query.filter_columns(type=column.type, lang=column.lang) %}
 {%- if column.metadata.config -%}
-{% set column_config = query.parse_json_asset(column.metadata.config) %}
+{% set column_config = query.parse_asset_data(column.metadata.config) %}
 {%- else -%}
 {% set column_config = {} %}
 {%- endif -%}

@@ -56,6 +56,11 @@
           "type": "url"
         },
         {
+          "name": "bluesky_url",
+          "friendlyName": "BlueSky",
+          "type": "url"
+        },
+        {
           "name": "github_url",
           "friendlyName": "GitHub",
           "type": "url"
@@ -110,6 +115,12 @@
     "switch_light#zh": "切换至明亮模式",
     "switch_dark": "Switch to dark color mode",
     "switch_dark#zh": "切换至黑暗模式",
+    "last_updated": "Last updated:",
+    "last_updated#zh": "最近更新：",
+    "hosts": "Hosts",
+    "hosts#zh": "主持人",
+    "guests": "Guests",
+    "guests#zh": "嘉宾",
     "copy": "Copy",
     "copy#zh": "复制"
   }
