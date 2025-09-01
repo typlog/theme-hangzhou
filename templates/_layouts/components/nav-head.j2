@@ -1,4 +1,59 @@
-{% from "macros/links.j2" import render_nav_links %}
+{% macro render_nav_links(links, prefix='nav') %}
+  <ul class="{{ prefix }}-links">
+    {%- for item in links -%}
+      {%- if item.children -%}
+        <li class="{{ prefix }}-link">
+          {% set link_id = prefix + '-' + item.title|urlencode|replace('%', '_') %}
+          {%- if item.link in ('', '#') -%}
+            <button class="js-menu" id="{{ link_id }}-trigger" type="button" aria-expanded="false" aria-controls="{{ link_id }}-content">
+              <span>{{ item.title }}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="m6 9l6 6l6-6"></path>
+              </svg>
+            </button>
+          {%- else -%}
+            <a id="{{ link_id }}-trigger" aria-expanded="false" aria-controls="{{ link_id }}-content"
+               href="{{ item.link }}"{% if item.new_tab  %} target="_blank"{% endif %}>
+              <span>{{ item.title }}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="m6 9l6 6l6-6"></path>
+              </svg>
+            </a>
+          {%- endif -%}
+          <ul id="{{ link_id }}-content" class="{{ prefix }}-sub-links" aria-labelledby="{{ link_id }}-trigger" aria-hidden="true"
+            {%- if item.children|count > 5 %} data-grid="true"{% endif %}>
+            {%- for child in item.children -%}
+              <li class="{{ prefix }}-sub-link"><a href="{{ child.link }}" {% if child.new_tab  %} target="_blank"{% endif %}>
+                {%- if child.icon -%}
+                  <div class="{{ prefix }}-sub-link-icon">
+                    <iconify-icon icon="{{ child.icon }}"></iconify-icon>
+                  </div>
+                {%- endif -%}
+                <div class="{{ prefix }}-sub-link-title">
+                  <strong>{{ child.title }}</strong>
+                  {% if child.subtitle %}<span>{{ child.subtitle }}</span>{% endif %}
+                </div>
+              </a></li>
+            {%- endfor -%}
+          </ul>
+        </li>
+      {%- else -%}
+        {%- if item.new_tab -%}
+          <li class="{{ prefix }}-link">
+            <a href="{{ item.link }}" target="_blank">
+              <span>{{ item.title }}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="M13 5h6v6m0-6L5 19"></path>
+              </svg>
+            </a>
+          </li>
+        {%- else -%}
+          <li class="{{ prefix }}-link"><a href="{{ item.link }}">{{ item.title }}</a></li>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+{% endmacro %}
 
 <div class="nav-head flex items-center justify-between lg:px-12 h-16 min-w-0 mx-4 lg:mx-0">
   <a class="nav-head-brand shrink-0" href="/">
