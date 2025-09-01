@@ -1,9 +1,7 @@
-{% from "macros/icons.j2" import render_icon %}
-
 {% macro render_sidebar_item(item) %}
 <div class="sidebar-item{% if note and item.url == note.url %} active{% endif %}">
   <a href="{{ item.url }}">
-    {% if item.icon %}{{ render_icon(item.icon) }}{% endif %}
+    {% if item.icon %}<iconify-icon icon="{{ item.icon }}"></iconify-icon>{% endif %}
     <span class="link-text">{{ item.title }}</span>
     {% if item.badge %}
     <span class="link-badge" data-badge="{{ item.badge }}">{{ item.badge }}</span>

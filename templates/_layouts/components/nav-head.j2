@@ -11,7 +11,7 @@
     {% include "./searchbox.j2" %}
     {% if theme_nav_actions %}
     <div class="hidden lg:flex items-center nav-head-actions">
-      {{ render_nav_links(theme_nav_actions) }}
+      {% include "./nav-actions.j2" %}
     </div>
     {% endif %}
     {% include "./theme-switch.j2" %}
@@ -32,7 +32,7 @@
     {{ render_nav_links(theme_nav_links, 'mobile-nav') }}
     {% if theme_nav_actions %}
       <div class="nav-head-actions flex items-center justify-center border-t mt-10 py-4">
-        {{ render_nav_links(theme_nav_actions) }}
+        {% include "./nav-actions.j2" %}
       </div>
     {% endif %}
   </div>

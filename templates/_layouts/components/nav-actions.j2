@@ -1,0 +1,5 @@
+<ul class="nav-links">
+  {%- for item in theme_nav_actions -%}
+    <li class="nav-link"><a href="{{ item.link }}"{% if item.new_tab %} target="_blank"{% endif %}>{{ item.title }}</a></li>
+  {%- endfor -%}
+</ul>
