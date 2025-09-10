@@ -106,14 +106,11 @@
           {% include "components/audio-player.j2" %}
           {{ note.content }}
         </div>
-        {% if note.tags %}
-          <div class="entry-tags flex items-center gap-4">
-            {% for tag in note.tags %}
-              <a class="p-category" href="{{ tag.url }}">{{ tag.title }}</a>
-            {% endfor %}
-          </div>
-        {% endif %}
+        {% include "./_partials/note-bottom.j2" %}
       </article>
+      <section class="entry-comments py-6">
+        {% include "components/web-comment.j2" %}
+      </section>
     </div>
   </main>
   {% include "./_layouts/footer.j2" %}

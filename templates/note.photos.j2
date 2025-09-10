@@ -18,7 +18,7 @@
       {% include "./_layouts/components/nav-head.j2" %}
     </div>
   </div>
-  <main id="main" class="max-w-content mx-auto pt-28 lg:pt-14 pb-16 lg:px-8">
+  <main id="main" class="max-w-content mx-auto pt-28 lg:pt-14 pb-16 px-4 md:px-6 lg:px-8">
     <article class="h-entry">
       <div class="flex items-center gap-2 mb-2">
         <a class="uppercase text-sm font-semibold text-accent-10" href="{{ column.url }}">{{ column.title }}</a>
@@ -32,10 +32,7 @@
       <div class="e-content">
         {{ note.content }}
       </div>
-      <div class="flex items-center justify-between">
-        {% include "./_partials/enjoy-button.j2" %}
-        {% include "./_partials/share-buttons.j2" %}
-      </div>
+      {% include "./_partials/note-bottom.j2" %}
     </article>
   </main>
   {% include "./_layouts/footer.j2" %}

@@ -23,7 +23,7 @@
   <main id="main" class="flex mx-auto pt-20 lg:pt-6 pb-10 lg:px-8
     {%- if has_toc %} max-w-6xl{% else %} max-w-4xl{% endif %}">
     <div id="content-container" class="grow px-6">
-      <article class="h-entry relative min-w-0 shrink pt-8 pb-6 max-w-[48rem] mx-auto">
+      <article class="h-entry relative min-w-0 shrink pt-8 max-w-[48rem] mx-auto">
         <div class="flex items-center gap-2 mb-2">
           <a class="uppercase text-sm font-semibold text-accent-10" href="{{ column.url }}">{{ column.title }}</a>
           <span class="text-xs text-gray-4">/</span>
@@ -36,16 +36,7 @@
         <div class="e-content font-serif lg:text-lg">
           {{ note.content }}
         </div>
-        <div class="flex items-center justify-between">
-          <div class="entry-tags flex items-center gap-4">
-            {% for tag in note.tags %}
-              <a class="p-category" href="{{ tag.url }}">{{ tag.title }}</a>
-            {% endfor %}
-          </div>
-          <div class="enjoy-button">
-            <button class="js-enjoy">Enjoy</button>
-          </div>
-        </div>
+        {% include "./_partials/note-bottom.j2" %}
       </article>
       <section class="entry-comments py-6">
         {% include "components/web-comment.j2" %}

@@ -1,0 +1,12 @@
+{% if note.tags %}
+<div class="entry-tags flex items-center gap-4 mb-6">
+  {% for tag in note.tags %}
+    <a class="p-category" href="{{ tag.url }}">{{ tag.title }}</a>
+  {% endfor %}
+</div>
+{% endif %}
+
+<div class="flex items-center justify-between">
+  {% include "./enjoy-button.j2" %}
+  {% include "./share-buttons.j2" %}
+</div>

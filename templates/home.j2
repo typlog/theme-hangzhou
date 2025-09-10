@@ -10,6 +10,8 @@
 {% include "components/iconify-icon.j2" %}
 {% endblock %}
 
+{% set home_config = query.parse_asset_data('#home-config.json') %}
+
 {% block body %}
   <div id="navbar" class="z-30 fixed lg:sticky top-0 w-full">
     <div id="navbar-backdrop"></div>
@@ -17,7 +19,18 @@
       {% include "./_layouts/components/nav-head.j2" %}
     </div>
   </div>
-  <main id="main" class="max-w-content mx-auto px-4 pt-28 lg:pt-0 lg:px-8">
+  <main id="main" class="max-w-content mx-auto pt-28 lg:pt-14 px-4 md:px-6 lg:px-8">
+    {% if not home_config or home_config.recent_posts %}
+      <div class="flex flex-col grow gap-8">
+        {% for note in query.paginate_notes(per_page=20) %}
+          {% if note.type == 'audio' and note.audio %}
+            {% include "./_partials/audio-item.j2" %}
+          {% else %}
+            {% include "./_partials/post-item.j2" %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
   </main>
   {% include "./_layouts/footer.j2" %}
 {% endblock %}
