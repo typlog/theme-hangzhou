@@ -45,9 +45,9 @@
   color: var(--gray-11);
   background-color: var(--gray-a3);
   border-radius: 4px;
-  height: 36px;
-  line-height: 36px;
-  font-size: 13px;
+  height: 34px;
+  line-height: 34px;
+  font-size: 12px;
   font-weight: 600;
   padding: 0 20px;
   cursor: pointer;
