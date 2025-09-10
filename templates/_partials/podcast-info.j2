@@ -1,0 +1,16 @@
+<div class="flex lg:flex-col gap-6">
+  {% if podcast.image %}
+  <img src="{{ podcast.image|thumbnail('ss') }}" width="120" height="120" alt="{{ podcast.title }}">
+  {% endif %}
+  <div class="flex-grow">
+    <h1 class="text-3xl lg:text-4xl font-bold">{{ podcast.title }}</h1>
+    {% if podcast.subtitle %}
+    <h2 class="mt-2 text-lg text-gray-11">{{ podcast.subtitle }}</h2>
+    {% endif %}
+    {% if podcast.description %}
+    <div class="hidden lg:block archive-description">
+      {{ podcast.description|markdown }}
+    </div>
+    {% endif %}
+  </div>
+</div>

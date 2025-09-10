@@ -21,42 +21,11 @@
     <div class="grow px-6 flex flex-col lg:flex-row gap-4">
       <section class="relative pb-6 mb-6 border-b lg:w-80 lg:pr-10 lg:border-none shrink">
         {% if author %}
-          <div class="flex lg:flex-col gap-6">
-            {% if author.avatar %}
-              <img src="{{ author.avatar|thumbnail('ss') }}" width="120" height="120" alt="{{ author.name }}">
-            {% endif %}
-            <div class="flex-grow">
-              <h1 class="text-xl lg:text-2xl font-bold">{{ author.name }}</h1>
-              {% if author.description %}
-                <div class="column-description">
-                  {{ author.description|markdown }}
-                </div>
-              {% endif %}
-            </div>
-          </div>
-          <div class="flex items-center gap-4 mt-6">
-            {% if author.metadata.x_url %}
-              <a href="{{ author.metadata.x_url }}" aria-label="X (Twitter)">
-                <iconify-icon icon="simple-icons:x"></iconify-icon>
-              </a>
-            {% endif %}
-            {% if author.metadata.bluesky_url %}
-              <a href="{{ author.metadata.bluesky_url }}" aria-label="BlueSky">
-                <iconify-icon icon="simple-icons:bluesky"></iconify-icon>
-              </a>
-            {% endif %}
-          </div>
+          {% include "./_partials/author-info.j2" %}
+        {% elif tag %}
+          {% include "./_partials/tag-info.j2" %}
         {% else %}
-          <div class="pb-6">
-            <h1 class="text-4xl font-bold">
-              {%- if tag -%}
-                <span class="text-gray-4 mr-1 select-none">#</span>
-                {{ tag.title }}
-              {%- else -%}
-                {{ translate('archive') }}
-              {%- endif -%}
-            </h1>
-          </div>
+          {% include "./_partials/site-info.j2" %}
         {% endif %}
       </section>
       <div class="flex flex-col grow gap-8">

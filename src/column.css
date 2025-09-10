@@ -1,19 +1,19 @@
 @import "./css/partials/navigation.css";
 
-.column-description {
+.archive-description {
   margin-top: 1.5rem;
 }
 
-.column-description p {
+.archive-description p {
   margin: 1rem 0;
 }
 
-.column-description a {
+.archive-description a {
   color: var(--accent-9);
   text-decoration: underline;
 }
 
-.column-description a:hover {
+.archive-description a:hover {
   color: var(--accent-11);
 }
 

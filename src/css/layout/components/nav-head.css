@@ -25,7 +25,7 @@ body[data-expanded*="mobile-navbar"] {
 }
 
 .nav-head-actions li:last-of-type a {
-  height: 34px;
+  height: 32px;
   background-color: var(--accent-10);
   color: var(--accent-contrast);
   border-radius: 6px;
