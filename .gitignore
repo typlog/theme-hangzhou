@@ -9,4 +9,5 @@ parts
 
 .env
 node_modules/
+static/
 npm-debug.log*

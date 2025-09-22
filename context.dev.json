@@ -40,18 +40,9 @@
       "link": "#"
     }
   ],
-  "theme_foot_socials": [
-    {
-      "icon": "logos:github-icon",
-      "title": "GitHub",
-      "link": "https://github.com/typlog/theme-nezu"
-    },
-    {
-      "icon": "logos:bluesky",
-      "title": "Bluesky",
-      "link": "https://bsky.app/profile/typlog.com"
-    }
-  ],
+  "theme_x_url": "https://x.com/typlog",
+  "theme_github_url": "https://github.com/typlog/theme-hangzhou",
+  "theme_bluesky_url": "https://bsky.app/profile/typlog.com",
   "theme_foot_links": [
     {
       "caption": "Resources",
