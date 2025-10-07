@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "repo": "typlog/theme-hangzhou",
   "image": "",
-  "description": "A theme for documentation.",
+  "description": "A theme for documentation, podcast, blogs and etc.",
   "config": [
     {
       "friendlyName": "General",
