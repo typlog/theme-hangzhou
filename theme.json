@@ -3,7 +3,7 @@
   "name#zh": "杭州",
   "version": "0.1.0",
   "repo": "typlog/theme-hangzhou",
-  "image": "",
+  "image": "https://cdn.jsdelivr.net/gh/typlog/theme-hangzhou/screenshot.jpg",
   "description": "A theme for documentation, podcast, blogs and etc.",
   "config": [
     {
