@@ -1,0 +1,12 @@
+{% if alternates %}
+  <button class="js-menu icon-button flex items-center" type="button" aria-label="{{ translate('languages') }}" aria-controls="nav-languages">
+    <iconify-icon icon="lucide:languages"></iconify-icon>
+  </button>
+  <div id="nav-languages">
+    <ul>
+      {% for item in alternates %}
+        <li><a href="{{ item.url }}" data-lang="{{ item.lang }}">{{ translate(item.lang) }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

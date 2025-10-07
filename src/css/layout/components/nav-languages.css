@@ -1,0 +1,18 @@
+#nav-languages {
+  display: none;
+  position: fixed;
+  top: 60px;
+  right: 2rem;
+  padding: 1.2rem;
+  box-shadow: var(--shadow-lg);
+  background-color: var(--background-color);
+  border: 1px solid var(--gray-a4);
+  border-radius: 6px;
+  z-index: 30;
+  max-height: calc(100vh - var(--navbar-height));
+  max-width: calc(100vw - 2rem);
+  overflow: auto;
+}
+#nav-languages[aria-hidden="false"] {
+  display: block;
+}
