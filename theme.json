@@ -1,7 +1,7 @@
 {
   "name": "hangzhou",
   "name#zh": "杭州",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "repo": "typlog/theme-hangzhou",
   "image": "https://cdn.jsdelivr.net/gh/typlog/theme-hangzhou/screenshot.jpg",
   "description": "A theme for documentation, podcast, blogs and etc.",
