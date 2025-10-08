@@ -1,0 +1,24 @@
+{
+  "expanded": true,
+  "introduction": "An introduction of this column.",
+  "sidebar": [
+    {
+      "title": "Discussion",
+      "icon": "ri:chat-thread-line",
+      "url": "https://github.com/typlog/theme-hangzhou/issues"
+    },
+    {
+      "title": "Get started",
+      "children": [
+        {
+          "title": "Configuration",
+          "url": "/docs/configuration"
+        },
+        {
+          "title": "Configuration",
+          "url": "/docs/configuration"
+        }
+      ]
+    }
+  ]
+}

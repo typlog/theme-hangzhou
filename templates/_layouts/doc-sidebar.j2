@@ -45,7 +45,7 @@
           {% endif %}
         {% endfor %}
       {% else %}
-        {% for item in query.filter_column_notes(column=column.id) %}
+        {% for item in query.filter_column_notes(column=column.id, order='asc') %}
           {{ render_sidebar_item(item) }}
         {% endfor %}
       {% endif %}
