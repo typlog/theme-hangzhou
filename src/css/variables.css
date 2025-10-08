@@ -11,8 +11,6 @@
   --base-font: Inter, var(--system-sans), var(--system-cjk), sans-serif;
   --heading-font: Inter, var(--system-sans), var(--system-cjk), sans-serif;
   --content-font: Inter, var(--system-serif), var(--system-cjk), serif;
-  --i-patterns-topo: url('../image/topo.svg');
-  --i-patterns-waves: url('../image/waves.svg');
 }
 
 .dark {
@@ -20,11 +18,4 @@
   --heading-color: #fff;
   --background-color: #212328;
   --background-dropback: rgba(33, 35, 40, 0.8);
-}
-
-.ui-root [data-section] {
-  --section-inner-max-width: 1400px;
-  --section-padding-inline-xs: 1.5rem;
-  --section-padding-inline-start: 1.5rem;
-  --section-padding-inline-end: 1.5rem;
 }
