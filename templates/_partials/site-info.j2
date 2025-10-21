@@ -1,10 +1,10 @@
 <div class="flex lg:flex-col gap-6">
   {% if site.glyph_logo_light %}
     {% if site.glyph_logo_dark %}
-      <img class="light-logo" src="{{ site.glyph_logo_light|thumbnail('ss') }}" loading="lazy" alt="{{ site.name }}" width="120" height="120" />
-      <img class="dark-logo" src="{{ site.glyph_logo_dark|thumbnail('ss') }}" loading="lazy" alt="{{ site.name }}" width="120" height="120" />
+      <img class="light-logo" src="{{ site.glyph_logo_light|thumbnail('ss') }}" fetchpriority="high" alt="{{ site.name }}" width="120" height="120" />
+      <img class="dark-logo" src="{{ site.glyph_logo_dark|thumbnail('ss') }}" fetchpriority="high" alt="{{ site.name }}" width="120" height="120" />
     {% else %}
-      <img class="light-logo dark-logo" src="{{ site.glyph_logo_light|thumbnail('ss') }}" loading="lazy" alt="{{ site.name }}" width="120" height="120" />
+      <img class="light-logo dark-logo" src="{{ site.glyph_logo_light|thumbnail('ss') }}" fetchpriority="high" alt="{{ site.name }}" width="120" height="120" />
     {% endif %}
   {% endif %}
   <div class="flex-grow">
